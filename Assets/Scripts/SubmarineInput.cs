@@ -12,6 +12,7 @@ public class SubmarineInput : MonoBehaviour
 
     public float minArrowLength = 0.5f;
     public float maxArrowLength = 8f;
+    public float forceMulti = 10;
     float initForce = 0;
 
 
@@ -48,6 +49,7 @@ public class SubmarineInput : MonoBehaviour
 
                     float dist = Mathf.Clamp(Vector3.Distance(point, Submarine.position)/10, minArrowLength, maxArrowLength);
                     initForce = dist;
+                    //Debug.DrawRay(Submarine.position, Submarine.forward * initForce * forceMulti, Color.blue);
                     arrow.transform.localScale = new Vector3(1, 1, dist);
                     Color c = Color.green;
                     if(dist <=maxArrowLength/5)
@@ -76,8 +78,8 @@ public class SubmarineInput : MonoBehaviour
                 arrow.SetActive(false);
                 if(OnLaunch != null)
                     OnLaunch();
-                //GameState.StartRun();
-                Submarine.GetComponent<ConstantForce>().force = Submarine.forward * 500 * initForce;
+                Submarine.GetComponent<ConstantForce>().force = Submarine.forward * initForce * forceMulti;
+                Submarine.GetComponent<SubmarineController>().SetForce(initForce * forceMulti);
             }
         }
     }

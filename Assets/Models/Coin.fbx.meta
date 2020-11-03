@@ -1,18 +1,9 @@
 fileFormatVersion: 2
-guid: 8aca0e651d2e65c4da5dcc5ef8f853b3
+guid: 8a21776c685767f48aeec4268b00c845
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-<<<<<<< HEAD
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 670224309865224971, guid: 91833de80dd4b094e8c4bcd5a7816a94, type: 3}
-=======
   externalObjects: {}
->>>>>>> delVhar_dev
   materials:
     materialImportMode: 1
     materialName: 0
@@ -43,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -94,11 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-<<<<<<< HEAD
-    globalScale: 100
-=======
-    globalScale: 1
->>>>>>> delVhar_dev
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

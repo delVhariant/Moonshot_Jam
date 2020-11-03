@@ -77,7 +77,7 @@ public class SubmarineInput : MonoBehaviour
                 if(OnLaunch != null)
                     OnLaunch();
                 //GameState.StartRun();
-                Submarine.GetComponent<Rigidbody>().AddForce(Submarine.forward * 500 * initForce, ForceMode.Force);
+                Submarine.GetComponent<ConstantForce>().force = Submarine.forward * 500 * initForce;
             }
         }
     }

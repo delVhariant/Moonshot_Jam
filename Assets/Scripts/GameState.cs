@@ -33,7 +33,7 @@ public class GameState : MonoBehaviour
     public void StartRun()
     {
         GameState.gameManager.started = true;
-        flyingCam.gameObject.SetActive(true);
+        //flyingCam.gameObject.SetActive(true);
     }
 
     public static void EndRun()

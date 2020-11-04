@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     public CinemachineVirtualCamera planningCam;
     public CinemachineVirtualCamera flyingCam;
     
+    public bool switchCam = false;
 
     void Awake()
     {
@@ -33,7 +34,8 @@ public class GameState : MonoBehaviour
     public void StartRun()
     {
         GameState.gameManager.started = true;
-        //flyingCam.gameObject.SetActive(true);
+        if(switchCam)
+            flyingCam.gameObject.SetActive(true);
     }
 
     public static void EndRun()

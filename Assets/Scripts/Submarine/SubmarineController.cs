@@ -36,7 +36,7 @@ public class SubmarineController : MonoBehaviour
                 turning = false;
                 //turnTarget = Vector3.zero;
             }
-            force.force = transform.forward * initialSpeed;
+            //force.force = transform.forward * initialSpeed;
         }
     }
 

@@ -78,8 +78,10 @@ public class SubmarineInput : MonoBehaviour
                 arrow.SetActive(false);
                 if(OnLaunch != null)
                     OnLaunch();
-                Submarine.GetComponent<ConstantForce>().force = Submarine.forward * initForce * forceMulti;
-                Submarine.GetComponent<SubmarineController>().SetForce(initForce * forceMulti);
+                //Submarine.GetComponent<ConstantForce>().force = Submarine.forward * initForce * forceMulti;
+                //Submarine.GetComponent<SubmarineController>().SetForce(initForce * forceMulti);
+                Submarine.GetComponent<Rigidbody>().AddForce(Submarine.forward * initForce * forceMulti, ForceMode.Force);
+                Submarine.GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }

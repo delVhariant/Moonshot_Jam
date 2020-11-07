@@ -2,27 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ObjectScaler))]
-public class SubmarineScaler : MonoBehaviour
+public class ObjectScaler : MonoBehaviour
 {
-    
-    
-    float baseMass;
-    float targetScale;
     bool performScaling;
 
+    float targetScale;
     float scaleSpeed;
-
-    Rigidbody rb;
-
-    ObjectScaler scaler;
+    Vector3 baseScale;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        scaler = GetComponent<ObjectScaler>();
-        rb = GetComponent<Rigidbody>();
-        baseMass = rb.mass;
+        baseScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -30,10 +22,10 @@ public class SubmarineScaler : MonoBehaviour
     {
         if(performScaling)
         {
-            rb.mass = Mathf.Lerp(rb.mass, baseMass * targetScale, scaleSpeed * Time.deltaTime);
-            if(Mathf.Abs(rb.mass - baseMass * targetScale) < 0.1)
+            transform.localScale = Vector3.Lerp(transform.localScale, baseScale * targetScale, scaleSpeed * Time.deltaTime);
+            if(Vector3.Distance(transform.localScale, baseScale * targetScale) < 0.1)
             {
-                rb.mass = baseMass * targetScale;
+                transform.localScale = baseScale * targetScale;
                 performScaling = false;
             }
 
@@ -45,6 +37,5 @@ public class SubmarineScaler : MonoBehaviour
         scaleSpeed = time;
         targetScale = scale;
         performScaling = true;
-        scaler.Scale(scale, time);
     }
 }

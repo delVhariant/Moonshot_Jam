@@ -28,7 +28,6 @@ public class ObjectScaler : MonoBehaviour
                 transform.localScale = baseScale * targetScale;
                 performScaling = false;
             }
-
         }
     }
 

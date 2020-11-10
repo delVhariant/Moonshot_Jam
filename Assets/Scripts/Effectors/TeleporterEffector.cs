@@ -34,7 +34,6 @@ public class TeleporterEffector : EffectorBase
             timer -= speed * Time.deltaTime;
             if(timer <= 0)
             {
-                
                 Vector3 n = Vector3.Normalize(exit.transform.forward);
                 Debug.Log($"Launching Speed: {Vector3.Magnitude(velocity)} at dir: {n} = {n * Vector3.Magnitude(velocity)}");
                 Rigidbody rb = teleportTarget.GetComponent<Rigidbody>();
@@ -42,7 +41,7 @@ public class TeleporterEffector : EffectorBase
                 rb.angularVelocity = rb.velocity;
                 teleportTarget.transform.position = exit.transform.position;
                 teleportTarget.transform.rotation = exit.transform.rotation;
-                rb.AddForce(Vector3.Magnitude(velocity) * n, ForceMode.Impulse);                
+                rb.AddForce(Vector3.Magnitude(velocity) * n, ForceMode.VelocityChange);                
             }
         }
     }

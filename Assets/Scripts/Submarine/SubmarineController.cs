@@ -15,10 +15,12 @@ public class SubmarineController : MonoBehaviour
     float initialSpeed;
 
     
+    
     // Start is called before the first frame update
     void Start()
     {
         force = GetComponent<ConstantForce>();
+        
     }
 
     // Update is called once per frame
@@ -50,4 +52,6 @@ public class SubmarineController : MonoBehaviour
     {
         initialSpeed = f;
     }
+
+    
 }

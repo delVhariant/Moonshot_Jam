@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+public enum GamePhase 
+{
+    Planning,
+    Aiming,
+    Execution,
+    End
+}
+    
+
 public class GameState : MonoBehaviour
 {
-    bool started;
+
     public static GameState gameManager;
+    public GamePhase gamePhase = GamePhase.Planning;
 
     public CinemachineVirtualCamera planningCam;
     public CinemachineVirtualCamera flyingCam;
     
+    public bool switchCam = false;
 
     void Awake()
     {
@@ -27,18 +38,19 @@ public class GameState : MonoBehaviour
     
     public static bool IsStarted()
     {
-        return GameState.gameManager.started;
+        return GameState.gameManager.gamePhase == GamePhase.Execution;
     }
 
     public void StartRun()
     {
-        GameState.gameManager.started = true;
-        //flyingCam.gameObject.SetActive(true);
+        GameState.gameManager.gamePhase = GamePhase.Execution;
+        if(switchCam)
+            flyingCam.gameObject.SetActive(true);
     }
 
     public static void EndRun()
     {
-        GameState.gameManager.started = false;
+        GameState.gameManager.gamePhase = GamePhase.End;
     }
     
 

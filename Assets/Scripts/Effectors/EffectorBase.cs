@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EffectorBase : MonoBehaviour
 {
+    public bool aiming = false;
     void Awake()
     {
 
@@ -16,9 +17,12 @@ public class EffectorBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-
+        if(aiming && EffectorSpawner.effectorSpawner.spawning == this && EffectorSpawner.effectorSpawner.state == SpawnState.Aiming)
+        {
+            PerformAiming();
+        }
     }
 
     void LateUpdate()
@@ -40,6 +44,17 @@ public class EffectorBase : MonoBehaviour
     virtual protected void OnTriggerExit(Collider other)
     {
 
+    }
+
+    virtual protected void PerformAiming()
+    {
+        Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));
+        transform.LookAt(point);
+        if(Input.GetMouseButtonDown(0))
+        {
+            EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
+            EffectorSpawner.effectorSpawner.spawning = null;            
+        }
     }
 
 }

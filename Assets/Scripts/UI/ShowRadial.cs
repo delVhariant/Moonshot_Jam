@@ -21,7 +21,6 @@ public class ShowRadial : MonoBehaviour
         {
             if(!visible && spawner.state == SpawnState.Idle && Input.GetMouseButtonDown(1))
             {
-                Debug.Log(Screen.currentResolution.width);
                 panel.anchoredPosition = new Vector2(Mathf.Clamp(Input.mousePosition.x, panel.sizeDelta.x/2, Screen.width-panel.sizeDelta.x/2), Mathf.Clamp(Input.mousePosition.y, panel.sizeDelta.y/2, Screen.height-panel.sizeDelta.y/2));
                 Show();          
             }

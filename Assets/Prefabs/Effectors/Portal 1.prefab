@@ -934,7 +934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5602e0177be6b41ae54a6fe9aab6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiming: 0
+  exitPrefab: {fileID: 6414230836366216230, guid: dc865596c846036499745a25e605031f, type: 3}
   exit: {fileID: 0}
   scaler: {fileID: 8391097658818255989}
+  isExit: 0
   speed: 10
   bigScale: 5

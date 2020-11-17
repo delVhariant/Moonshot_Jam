@@ -94,11 +94,19 @@ public class TeleporterEffector : EffectorBase
         
     }
 
-    override protected void PerformAiming()
+    override public void PerformAiming()
     {
-        Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));
-        transform.LookAt(point);
-        if(Input.GetMouseButtonDown(0))
+        if(isExit)
+        {
+            Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));
+            transform.LookAt(point);
+            if(Input.GetMouseButtonDown(0))
+            {
+                EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
+                EffectorSpawner.effectorSpawner.spawning = null;
+            }
+        }
+        else
         {
             if(!isExit)
             {
@@ -110,11 +118,7 @@ public class TeleporterEffector : EffectorBase
                     EffectorSpawner.effectorSpawner.SpawnNew(e);
                 }
             }
-            else
-            {
-                EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-                EffectorSpawner.effectorSpawner.spawning = null;
-            }
         }
+        
     }
 }

@@ -48,20 +48,12 @@ public class EffectorSpawner : MonoBehaviour
                     GameState.gameManager.planningCam.Follow = null;
                     state = SpawnState.Aiming;
                     spawning.aiming = true;
-                }
-                
+                }                
             }
-            /*else if(state == SpawnState.Aiming)
+            else if(state == SpawnState.Aiming)
             {
-                Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));
-                spawning.transform.LookAt(point);
-                if(Input.GetMouseButtonDown(0))
-                {
-                    state = SpawnState.Idle;
-                    spawning = null;
-                    
-                }
-            }*/
+                spawning.PerformAiming();
+            }
         }
     }
 

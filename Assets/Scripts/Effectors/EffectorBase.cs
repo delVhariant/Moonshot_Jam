@@ -19,10 +19,10 @@ public class EffectorBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if(aiming && EffectorSpawner.effectorSpawner.spawning == this && EffectorSpawner.effectorSpawner.state == SpawnState.Aiming)
+        /*if(aiming && EffectorSpawner.effectorSpawner.spawning == this && EffectorSpawner.effectorSpawner.state == SpawnState.Aiming)
         {
             PerformAiming();
-        }
+        }*/
     }
 
     void LateUpdate()
@@ -46,12 +46,13 @@ public class EffectorBase : MonoBehaviour
 
     }
 
-    virtual protected void PerformAiming()
+    virtual public void PerformAiming()
     {
         Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));
         transform.LookAt(point);
         if(Input.GetMouseButtonDown(0))
         {
+            Debug.Log("aiming complete");
             EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
             EffectorSpawner.effectorSpawner.spawning = null;            
         }

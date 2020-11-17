@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 6414230836366216229}
   - component: {fileID: 6414230836366216234}
   m_Layer: 0
-  m_Name: Portal
+  m_Name: PortalExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -727,4 +727,4 @@ MonoBehaviour:
   isExit: 1
   speed: 10
   bigScale: 5
-  maxDistance: 30
+  maxDistance: 60

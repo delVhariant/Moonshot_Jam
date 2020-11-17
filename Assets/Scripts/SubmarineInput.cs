@@ -26,17 +26,15 @@ public class SubmarineInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameState.gameManager.sub = Submarine;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!GameState.IsStarted())
+        if(!GameState.IsStarted() && GameState.gameManager.gamePhase == GamePhase.Aiming)
         {
-            if(Input.GetMouseButton(0))
-            {
-                Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));                
+            Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));                
                 if(arrow)
                 {
                     if(!arrow.activeSelf)
@@ -72,8 +70,8 @@ public class SubmarineInput : MonoBehaviour
                     }
                 }
                 Submarine.LookAt(point);
-            }
-            else if(Input.GetMouseButtonUp(0))
+            
+            if(Input.GetMouseButtonDown(0))
             {
                 arrow.SetActive(false);
                 if(OnLaunch != null)

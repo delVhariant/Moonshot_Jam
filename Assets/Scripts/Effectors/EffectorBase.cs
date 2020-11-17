@@ -52,7 +52,6 @@ public class EffectorBase : MonoBehaviour
         transform.LookAt(point);
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("aiming complete");
             EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
             EffectorSpawner.effectorSpawner.spawning = null;            
         }

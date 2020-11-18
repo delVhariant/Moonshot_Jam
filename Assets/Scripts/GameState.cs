@@ -13,11 +13,13 @@ public enum GamePhase
     Execution,
     End
 }
-    
 
 public class GameState : MonoBehaviour
 {
 
+    public delegate void GameReset();
+    public static event GameReset OnReset;
+    
     public static GameState gameManager;
     public GamePhase gamePhase = GamePhase.Planning;
 
@@ -26,6 +28,7 @@ public class GameState : MonoBehaviour
     public CinemachineVirtualCamera aimingCam;
 
     public Text phaseText;
+    public Button planButton;
     public GameObject finishText;
     public bool switchCam = false;
 
@@ -72,6 +75,13 @@ public class GameState : MonoBehaviour
     void Start()
     {
         SubmarineInput.OnLaunch += StartRun;
+
+        planButton = phaseText.GetComponentInChildren<Button>();
+    }
+
+    public void FullReset()
+    {
+
     }
 
     public void StartAiming()
@@ -80,17 +90,18 @@ public class GameState : MonoBehaviour
         planningCam.gameObject.SetActive(false);
         GameState.gameManager.gamePhase = GamePhase.Aiming;
         phaseText.text = GamePhase.Aiming.ToString();
-        phaseText.GetComponentInChildren<Button>().gameObject.SetActive(false);
+        planButton.gameObject.SetActive(false);
     }
 
     public void StartPlanning()
     {
         aimingCam.gameObject.SetActive(false);
         planningCam.gameObject.SetActive(true);
+        planningCam.Follow = sub;
         GameState.gameManager.gamePhase = GamePhase.Planning;
         phaseText.gameObject.SetActive(true);
         phaseText.text = GamePhase.Planning.ToString();
-        phaseText.GetComponentInChildren<Button>().gameObject.SetActive(true);
+        planButton.gameObject.SetActive(true);
     }
 
 
@@ -118,6 +129,10 @@ public class GameState : MonoBehaviour
     {
         finishText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        finishText.SetActive(false);
+        if(OnReset != null)
+            OnReset();
+        StartPlanning();
     }
 }

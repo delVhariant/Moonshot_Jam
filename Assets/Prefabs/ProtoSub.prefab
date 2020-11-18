@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 1230543837604685379}
   - component: {fileID: 304206369265371459}
   - component: {fileID: 7921779734656349034}
+  - component: {fileID: 677195268}
   m_Layer: 0
   m_Name: ProtoSub
   m_TagString: Untagged
@@ -832,6 +833,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fa0c7b62b394da4fa27be44150da951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &677195268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528669222317026896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166e5950a00ceaf49a67f84adb13fc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6528669222548765507

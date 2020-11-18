@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 using Cinemachine;
 
 public enum GamePhase 
@@ -20,8 +23,18 @@ public class GameState : MonoBehaviour
 
     public CinemachineVirtualCamera planningCam;
     public CinemachineVirtualCamera flyingCam;
-    
+    public CinemachineVirtualCamera aimingCam;
+
+    public Text phaseText;
+    public GameObject finishText;
     public bool switchCam = false;
+
+    public Transform sub;
+    [SerializeField]
+    Vector3 subPos;
+    public float timeSinceMove = 0;
+    public float minChangeNumber = 0.1f;
+    public float timeLimit = 3;
 
     void Awake()
     {
@@ -44,6 +57,7 @@ public class GameState : MonoBehaviour
     public void StartRun()
     {
         GameState.gameManager.gamePhase = GamePhase.Execution;
+        phaseText.text = GamePhase.Execution.ToString();
         if(switchCam)
             flyingCam.gameObject.SetActive(true);
     }
@@ -51,6 +65,7 @@ public class GameState : MonoBehaviour
     public static void EndRun()
     {
         GameState.gameManager.gamePhase = GamePhase.End;
+        GameState.gameManager.phaseText.text = GamePhase.Execution.ToString();
     }
     
 
@@ -60,9 +75,50 @@ public class GameState : MonoBehaviour
         SubmarineInput.OnLaunch += StartRun;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartAiming()
     {
-        
+        aimingCam.gameObject.SetActive(true);
+        planningCam.gameObject.SetActive(false);
+        GameState.gameManager.gamePhase = GamePhase.Aiming;
+        phaseText.text = GamePhase.Aiming.ToString();
+        phaseText.GetComponentInChildren<Button>().gameObject.SetActive(false);
+    }
+
+    public void StartPlanning()
+    {
+        aimingCam.gameObject.SetActive(false);
+        planningCam.gameObject.SetActive(true);
+        GameState.gameManager.gamePhase = GamePhase.Planning;
+        phaseText.gameObject.SetActive(true);
+        phaseText.text = GamePhase.Planning.ToString();
+        phaseText.GetComponentInChildren<Button>().gameObject.SetActive(true);
+    }
+
+
+    void LateUpdate()
+    {
+        if(gamePhase == GamePhase.Execution && sub)
+        {
+            if(Vector3.Distance(subPos,sub.position) < minChangeNumber)
+            {
+                timeSinceMove += Time.deltaTime;
+                if(timeSinceMove > timeLimit)
+                {
+                    StartCoroutine(Reload());
+                }
+            }
+            else
+            {
+                timeSinceMove = 0f;
+            }
+            subPos = sub.position;
+        }
+    }
+
+    IEnumerator Reload()
+    {
+        finishText.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

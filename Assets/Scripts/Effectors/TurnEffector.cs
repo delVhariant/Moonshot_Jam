@@ -10,12 +10,6 @@ public class TurnEffector : EffectorBase
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     protected override void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<SubmarineController>(out var controller))

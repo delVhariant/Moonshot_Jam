@@ -206,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4409378358948712597}
   - component: {fileID: 4409378358948712596}
+  - component: {fileID: -2285962802142432960}
   m_Layer: 8
   m_Name: Bouncer
   m_TagString: Untagged
@@ -237,12 +238,25 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4409378358948712598}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fa444f6f8f3a67342ab5bca32aab1e0e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2285962802142432960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4409378358948712598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84730579cf4fd9940ab417cc6bc61fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiming: 0
 --- !u!1001 &1732620938043324088
 PrefabInstance:
   m_ObjectHideFlags: 0

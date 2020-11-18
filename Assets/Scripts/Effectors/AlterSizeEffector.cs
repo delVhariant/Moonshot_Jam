@@ -14,4 +14,10 @@ public class AlterSizeEffector : EffectorBase
             controller.Scale(scale, scaleTime);
         }
     }
+
+    override public void PerformAiming()
+    {
+        EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
+        EffectorSpawner.effectorSpawner.spawning = null;   
+    }
 }

@@ -50,6 +50,8 @@ public class GameState : MonoBehaviour
         {
             GameState.gameManager = this;
         }
+
+        planButton = phaseText.GetComponentInChildren<Button>();
     }
     
     public static bool IsStarted()
@@ -77,7 +79,6 @@ public class GameState : MonoBehaviour
     {
         SubmarineInput.OnLaunch += StartRun;
 
-        planButton = phaseText.GetComponentInChildren<Button>();
     }
 
     public void FullReset()

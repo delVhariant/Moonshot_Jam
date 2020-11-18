@@ -36,6 +36,7 @@ public class GameState : MonoBehaviour
     [SerializeField]
     Vector3 subPos;
     public float timeSinceMove = 0;
+    public float minChangeNumber = 0.1f;
     public float timeLimit = 3;
 
     void Awake()
@@ -109,7 +110,7 @@ public class GameState : MonoBehaviour
     {
         if(gamePhase == GamePhase.Execution && sub)
         {
-            if(Vector3.Distance(subPos,sub.position) < 0.1)
+            if(Vector3.Distance(subPos,sub.position) < minChangeNumber)
             {
                 timeSinceMove += Time.deltaTime;
                 if(timeSinceMove > timeLimit)

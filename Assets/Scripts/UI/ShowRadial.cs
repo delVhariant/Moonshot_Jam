@@ -24,6 +24,10 @@ public class ShowRadial : MonoBehaviour
                 panel.anchoredPosition = new Vector2(Mathf.Clamp(Input.mousePosition.x, panel.sizeDelta.x/2, Screen.width-panel.sizeDelta.x/2), Mathf.Clamp(Input.mousePosition.y, panel.sizeDelta.y/2, Screen.height-panel.sizeDelta.y/2));
                 Show();          
             }
+            else if(visible && Input.GetMouseButtonDown(1))
+            {
+                Hide();
+            }
         }
     }
 

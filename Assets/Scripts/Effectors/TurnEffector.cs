@@ -12,6 +12,9 @@ public class TurnEffector : EffectorBase
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if(!GameState.IsStarted())
+            return;
+        
         if(other.TryGetComponent<SubmarineController>(out var controller))
         {
             controller.Turn(transform.rotation.eulerAngles);

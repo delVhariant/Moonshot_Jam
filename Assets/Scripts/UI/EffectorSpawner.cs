@@ -48,7 +48,14 @@ public class EffectorSpawner : MonoBehaviour
                     GameState.gameManager.planningCam.Follow = null;
                     state = SpawnState.Aiming;
                     spawning.aiming = true;
-                }                
+                }
+                else if(Input.GetMouseButtonDown(1))
+                {
+                    GameState.gameManager.planningCam.Follow = null;
+                    GameObject.Destroy(spawning.gameObject);
+                    spawning = null;
+                    state = SpawnState.Idle;
+                }
             }
             else if(state == SpawnState.Aiming)
             {

@@ -72,6 +72,9 @@ public class TeleporterEffector : EffectorBase
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if(!GameState.IsStarted())
+            return;
+        
         scaler.Scale(bigScale, speed);
         timer=1;
         if(pair && !isExit)
@@ -84,6 +87,9 @@ public class TeleporterEffector : EffectorBase
 
     protected override void OnTriggerExit(Collider other)
     {
+        if(!GameState.IsStarted())
+            return;
+        
         scaler.Scale(1, speed);
         if(timer != 0)
         {
@@ -110,7 +116,12 @@ public class TeleporterEffector : EffectorBase
         {
             if(!isExit)
             {
-                if(exitPrefab)
+                if(pair)
+                {
+                    EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
+                    EffectorSpawner.effectorSpawner.spawning = null;
+                }
+                else if(exitPrefab)
                 {
                     GameObject e = Instantiate(exitPrefab, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x)), exitPrefab.transform.rotation);
                     SetPair(e.GetComponent<TeleporterEffector>());
@@ -120,5 +131,16 @@ public class TeleporterEffector : EffectorBase
             }
         }
         
+    }
+
+    public override void MoveEffector()
+    {
+        if(!isExit && pair)
+        {
+            GameObject.Destroy(pair.gameObject);
+            pair = null;
+        }
+        GameState.gameManager.planningCam.Follow = transform;
+        EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
     }
 }

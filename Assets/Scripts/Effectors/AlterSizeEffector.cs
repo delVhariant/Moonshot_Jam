@@ -28,8 +28,7 @@ public class AlterSizeEffector : EffectorBase
         if(aiming)
         {
             aiming = false;
-            EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-            EffectorSpawner.effectorSpawner.spawning = null;            
+            EffectorSpawner.effectorSpawner.FinishSpawn(transform);
         }
     }
 }

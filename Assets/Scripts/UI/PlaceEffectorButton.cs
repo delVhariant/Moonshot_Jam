@@ -27,7 +27,6 @@ public class PlaceEffectorButton : MonoBehaviour
             if(effectorPrefab)
             {
                 GameObject e = Instantiate(effectorPrefab, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x)), effectorPrefab.transform.rotation);
-                GameState.gameManager.planningCam.Follow = e.transform;
                 spawner.SpawnNew(e);
                 radialMenu.Hide();
             }

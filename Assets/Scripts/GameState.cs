@@ -14,6 +14,12 @@ public enum GamePhase
     End
 }
 
+public enum ControlType
+{
+    RealTime,
+    Plan
+}
+
 public class GameState : MonoBehaviour
 {
 
@@ -24,13 +30,14 @@ public class GameState : MonoBehaviour
     public GamePhase gamePhase = GamePhase.Planning;
 
     public CinemachineVirtualCamera planningCam;
-    public CinemachineVirtualCamera flyingCam;
+    public CinemachineVirtualCamera realTimeCam;
     public CinemachineVirtualCamera aimingCam;
+
+    public CinemachineTargetGroup realTimeTarget;
 
     public Text phaseText;
     public Button planButton;
     public GameObject finishText;
-    public bool switchCam = false;
 
     public Transform sub;
     [SerializeField]
@@ -38,6 +45,10 @@ public class GameState : MonoBehaviour
     public float timeSinceMove = 0;
     public float minChangeNumber = 0.1f;
     public float timeLimit = 3;
+
+    public float timeScale = 0.3f;
+
+    public ControlType controlType = ControlType.Plan;
 
     void Awake()
     {
@@ -54,6 +65,19 @@ public class GameState : MonoBehaviour
         planButton = phaseText.GetComponentInChildren<Button>();
     }
     
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+    public void SlowTime()
+    {
+        Time.timeScale = timeScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        //Debug.Log($"Now operating at: {Time.timeScale}. Physics every: {Time.fixedDeltaTime}");        
+    }
+
     public static bool IsStarted()
     {
         return GameState.gameManager.gamePhase == GamePhase.Execution;
@@ -63,8 +87,6 @@ public class GameState : MonoBehaviour
     {
         GameState.gameManager.gamePhase = GamePhase.Execution;
         phaseText.text = GamePhase.Execution.ToString();
-        if(switchCam)
-            flyingCam.gameObject.SetActive(true);
     }
 
     public static void EndRun()
@@ -78,6 +100,7 @@ public class GameState : MonoBehaviour
     void Start()
     {
         SubmarineInput.OnLaunch += StartRun;
+        StartPlanning();
 
     }
 
@@ -88,22 +111,46 @@ public class GameState : MonoBehaviour
 
     public void StartAiming()
     {
-        aimingCam.gameObject.SetActive(true);
-        planningCam.gameObject.SetActive(false);
+        if(controlType != ControlType.RealTime)
+        {
+            aimingCam.gameObject.SetActive(true);
+            planningCam.gameObject.SetActive(false);
+            realTimeCam.gameObject.SetActive(false);
+            planningCam.LookAt = null;
+        }
+        else
+        {
+            aimingCam.gameObject.SetActive(false);
+            planningCam.gameObject.SetActive(false);
+            realTimeCam.gameObject.SetActive(true);
+        }
+        
         GameState.gameManager.gamePhase = GamePhase.Aiming;
         phaseText.text = GamePhase.Aiming.ToString();
+        phaseText.gameObject.SetActive(true);
         planButton.gameObject.SetActive(false);
     }
 
     public void StartPlanning()
-    {
-        aimingCam.gameObject.SetActive(false);
-        planningCam.gameObject.SetActive(true);
-        planningCam.Follow = sub;
-        GameState.gameManager.gamePhase = GamePhase.Planning;
-        phaseText.gameObject.SetActive(true);
-        phaseText.text = GamePhase.Planning.ToString();
-        planButton.gameObject.SetActive(true);
+    {        
+        if(controlType != ControlType.RealTime)
+        {
+            aimingCam.gameObject.SetActive(false);
+            planningCam.gameObject.SetActive(true);
+            planningCam.Follow = sub;
+            
+            GameState.gameManager.gamePhase = GamePhase.Planning;
+            phaseText.gameObject.SetActive(true);
+            phaseText.text = GamePhase.Planning.ToString();
+            planButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            StartAiming();
+        }
+        
+        
+        
     }
 
 

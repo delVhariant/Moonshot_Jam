@@ -54,14 +54,12 @@ public class EffectorBase : MonoBehaviour
         transform.LookAt(point);
         if(Input.GetMouseButtonDown(0))
         {
-            EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-            EffectorSpawner.effectorSpawner.spawning = null;            
+            EffectorSpawner.effectorSpawner.FinishSpawn(transform);
         }
     }
 
     public virtual void MoveEffector()
     {
-        GameState.gameManager.planningCam.Follow = transform;
         EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
     }
 

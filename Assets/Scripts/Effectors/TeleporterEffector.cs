@@ -53,7 +53,7 @@ public class TeleporterEffector : EffectorBase
             if(timer <= 0)
             {
                 Vector3 n = Vector3.Normalize(pair.transform.forward);
-                Debug.Log($"Launching Speed: {Vector3.Magnitude(velocity)} at dir: {n} = {n * Vector3.Magnitude(velocity)}");
+                //Debug.Log($"Launching Speed: {Vector3.Magnitude(velocity)} at dir: {n} = {n * Vector3.Magnitude(velocity)}");
                 Rigidbody rb = teleportTarget.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = rb.velocity;
@@ -108,8 +108,9 @@ public class TeleporterEffector : EffectorBase
             transform.LookAt(point);
             if(Input.GetMouseButtonDown(0))
             {
-                EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-                EffectorSpawner.effectorSpawner.spawning = null;
+                
+                pair.GetComponentInChildren<EffectorHighlighter>().enabled = true;
+                EffectorSpawner.effectorSpawner.FinishSpawn(transform);
             }
         }
         else
@@ -118,14 +119,14 @@ public class TeleporterEffector : EffectorBase
             {
                 if(pair)
                 {
-                    EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-                    EffectorSpawner.effectorSpawner.spawning = null;
+                    pair.GetComponentInChildren<EffectorHighlighter>().enabled = true;
+                    EffectorSpawner.effectorSpawner.FinishSpawn(transform);
                 }
                 else if(exitPrefab)
                 {
+                    GameState.gameManager.realTimeTarget.RemoveMember(transform);
                     GameObject e = Instantiate(exitPrefab, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x)), exitPrefab.transform.rotation);
                     SetPair(e.GetComponent<TeleporterEffector>());
-                    GameState.gameManager.planningCam.Follow = e.transform;
                     EffectorSpawner.effectorSpawner.SpawnNew(e);
                 }
             }
@@ -140,7 +141,6 @@ public class TeleporterEffector : EffectorBase
             GameObject.Destroy(pair.gameObject);
             pair = null;
         }
-        GameState.gameManager.planningCam.Follow = transform;
         EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
     }
 }

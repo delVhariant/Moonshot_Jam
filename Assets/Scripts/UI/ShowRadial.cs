@@ -17,7 +17,7 @@ public class ShowRadial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameState.gameManager.gamePhase == GamePhase.Planning)
+        if(GameState.gameManager.gamePhase == GamePhase.Planning || GameState.gameManager.controlType == ControlType.RealTime)
         {
             if(!visible && spawner.state == SpawnState.Idle && Input.GetMouseButtonDown(1))
             {
@@ -35,11 +35,19 @@ public class ShowRadial : MonoBehaviour
     {
         panel.gameObject.SetActive(true);
         visible = true;
+        if(GameState.gameManager.controlType == ControlType.RealTime)
+        {
+            GameState.gameManager.SlowTime();
+        }
     }
 
     public void Hide()
     {
         panel.gameObject.SetActive(false);
         visible = false;
+        if(GameState.gameManager.controlType == ControlType.RealTime && spawner.state == SpawnState.Idle)
+        {
+            GameState.gameManager.ResetTimeScale();
+        }
     }
 }

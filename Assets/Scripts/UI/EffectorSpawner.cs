@@ -40,6 +40,11 @@ public class EffectorSpawner : MonoBehaviour
     {
         if(spawning)
         {
+            if(Input.GetMouseButtonDown(1))
+            {
+                CancelSpawn();
+            }
+            
             if(state == SpawnState.Placing)
             {
                 spawning.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.x));                
@@ -49,14 +54,6 @@ public class EffectorSpawner : MonoBehaviour
                     CameraLook(null);
                     state = SpawnState.Aiming;
                     spawning.aiming = true;
-                }
-                else if(Input.GetMouseButtonDown(1))
-                {
-                    //GameState.gameManager.planningCam.Follow = null;
-                    CameraLook(null);
-                    GameObject.Destroy(spawning.gameObject);
-                    
-
                 }
             }
             else if(state == SpawnState.Aiming)
@@ -83,6 +80,22 @@ public class EffectorSpawner : MonoBehaviour
             GameState.gameManager.ResetTimeScale();
         }
         spawned.GetComponentInChildren<EffectorHighlighter>().enabled = true;
+    }
+
+    public void CancelSpawn(bool speedUp = true)
+    {
+        if(state != SpawnState.Idle)
+            {
+                //GameState.gameManager.planningCam.Follow = null;
+                CameraLook(null);
+                GameObject.Destroy(spawning.gameObject);
+                spawning = null;
+                state = SpawnState.Idle;
+                if(GameState.gameManager.controlType == ControlType.RealTime && speedUp)
+                {
+                    GameState.gameManager.ResetTimeScale();
+                }
+            }
     }
 
     public void CameraLook(Transform spawn)

@@ -143,4 +143,12 @@ public class TeleporterEffector : EffectorBase
         }
         EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
     }
+
+    void OnDestroy()
+    {
+        if(pair && isExit)
+        {
+            GameObject.Destroy(pair.gameObject);
+        }
+    }
 }

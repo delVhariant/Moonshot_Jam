@@ -33,12 +33,16 @@ public class ShowRadial : MonoBehaviour
 
     public void Show()
     {
-        panel.gameObject.SetActive(true);
-        visible = true;
         if(GameState.gameManager.controlType == ControlType.RealTime)
         {
+            if(!GameState.IsStarted())
+                return;
+
             GameState.gameManager.SlowTime();
         }
+
+        panel.gameObject.SetActive(true);
+        visible = true;
     }
 
     public void Hide()

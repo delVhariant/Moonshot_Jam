@@ -11,7 +11,8 @@ public enum GamePhase
     Planning,
     Aiming,
     Execution,
-    End
+    End,
+    Popup
 }
 
 public enum ControlType
@@ -20,11 +21,19 @@ public enum ControlType
     Plan
 }
 
+public enum GameMode
+{
+    MetroidVania,
+    Normal
+}
+
 public class GameState : MonoBehaviour
 {
 
     public delegate void GameReset();
     public static event GameReset OnReset;
+
+    public GameMode gameMode = GameMode.Normal;
     
     public static GameState gameManager;
     public GamePhase gamePhase = GamePhase.Planning;
@@ -49,6 +58,8 @@ public class GameState : MonoBehaviour
     public float timeScale = 0.3f;
 
     public ControlType controlType = ControlType.Plan;
+
+    public Text popup;
 
     void Awake()
     {
@@ -109,6 +120,25 @@ public class GameState : MonoBehaviour
 
     }
 
+    public void ShowPopup(string msg)
+    {
+        if(popup)
+        {
+            popup.text = msg;
+            popup.gameObject.SetActive(true);
+            EffectorSpawner.effectorSpawner.CancelSpawn(false); // Cancel whatever spawn we're doing.
+            SlowTime();
+            gamePhase = GamePhase.Popup;
+        }
+    }
+
+    public void HidePopup()
+    {
+        popup.gameObject.SetActive(false);
+        ResetTimeScale();
+        gamePhase = GamePhase.Execution;
+    }
+
     public void StartAiming()
     {
         if(controlType != ControlType.RealTime)
@@ -156,7 +186,7 @@ public class GameState : MonoBehaviour
 
     void LateUpdate()
     {
-        if(gamePhase == GamePhase.Execution && sub)
+        if(gamePhase == GamePhase.Execution && sub && gameMode == GameMode.Normal)
         {
             if(Vector3.Distance(subPos,sub.position) < minChangeNumber)
             {

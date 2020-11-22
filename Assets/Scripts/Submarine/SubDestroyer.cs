@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SubDestroyer : MonoBehaviour
 {
-    
-    Rigidbody rb;
-    float baseMass;
+    public LayerMask destroy;
+    public Rigidbody rb;
+    public float baseMass;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,7 +22,8 @@ public class SubDestroyer : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        if(coll.gameObject.layer == LayerMask.NameToLayer("Desctructible") && rb.mass > baseMass)
+            //((layerMask & 1 << layer) != 0)
+        if((destroy & 1 << coll.gameObject.layer) !=0 && rb.mass > baseMass)
         {
             GameObject.Destroy(coll.gameObject);
         }

@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 31c7911f3af78e84a84208febdeac6f3
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: 8927826310849412938
+    second: BasicPropSkele|Action
+  - first:
+      74: -2955403182392409497
+    second: BasicPropSkele|basePose
+  - first:
+      74: 7649905228310590640
+    second: BasicPropSkele|BasicPropSkeleAction
+  - first:
+      74: -555713844988334544
+    second: BasicPropSkele|ChildScale
+  - first:
+      74: 4125823371314442991
+    second: BasicPropSkele|ChildScale.001
+  - first:
+      74: -3642821432903167159
+    second: BasicPropSkele|finStanding
+  - first:
+      74: 6049260447628096897
+    second: BasicPropSkele|mermaidStart
+  - first:
+      74: 7812548265703463159
+    second: BasicPropSkele|mermaidStart.001
+  - first:
+      74: 8752469779282238285
+    second: BasicPropSkele|PoseLib.002
+  - first:
+      74: -3489261603733896202
+    second: BasicPropSkele|rootAction
+  - first:
+      74: -1686708845869573541
+    second: BasicPropSkele|rootAction.001
+  - first:
+      74: -4992296004383023093
+    second: BasicPropSkele|sidedle
+  - first:
+      74: 4862590883858732067
+    second: BasicPropSkele|sideFalling
+  - first:
+      74: 3538388368070373019
+    second: BasicPropSkele|sideJump
+  - first:
+      74: -1177291087722710627
+    second: BasicPropSkele|sideLand
+  - first:
+      74: -1277685800396542894
+    second: BasicPropSkele|sideRun
+  - first:
+      74: -2587689885189651978
+    second: BasicPropSkele|sideRunTilt
+  - first:
+      74: 3931309222562121654
+    second: BasicPropSkele|sideRunTilt.001
+  - first:
+      74: -5780167932241802084
+    second: BasicPropSkele|toonify
+  - first:
+      74: -2476484017831315304
+    second: BasicPropSkele|walkCycle
+  - first:
+      74: -5756082415446027088
+    second: BasicPropSkele|wallSlide.001
+  - first:
+      74: -4462581193124939477
+    second: BasicPropSkele|wallSlideJump
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

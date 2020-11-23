@@ -15,9 +15,9 @@ TagManager:
   - 
   - Effector
   - Player
-  - 
-  - 
-  - 
+  - EffectorMouseover
+  - EffectorPickup
+  - Destrucible
   - 
   - 
   - 

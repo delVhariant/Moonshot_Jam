@@ -24,7 +24,8 @@ public enum ControlType
 public enum GameMode
 {
     MetroidVania,
-    Normal
+    Normal,
+    Menu
 }
 
 public class GameState : MonoBehaviour
@@ -73,7 +74,8 @@ public class GameState : MonoBehaviour
             GameState.gameManager = this;
         }
 
-        planButton = phaseText.GetComponentInChildren<Button>();
+        if(gameMode != GameMode.Menu)
+            planButton = phaseText.GetComponentInChildren<Button>();
     }
     
     public void ResetTimeScale()
@@ -111,7 +113,8 @@ public class GameState : MonoBehaviour
     void Start()
     {
         SubmarineInput.OnLaunch += StartRun;
-        StartPlanning();
+        if(gameMode != GameMode.Menu)
+            StartPlanning();
 
     }
 
@@ -186,7 +189,7 @@ public class GameState : MonoBehaviour
 
     void LateUpdate()
     {
-        if(gamePhase == GamePhase.Execution && sub && gameMode == GameMode.Normal)
+        if(gamePhase == GamePhase.Execution && sub && (gameMode == GameMode.Normal || gameMode == GameMode.Menu))
         {
             if(Vector3.Distance(subPos,sub.position) < minChangeNumber)
             {
@@ -206,12 +209,16 @@ public class GameState : MonoBehaviour
 
     IEnumerator Reload()
     {
-        finishText.SetActive(true);
+        if(gameMode != GameMode.Menu)
+            finishText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        finishText.SetActive(false);
+        if(gameMode != GameMode.Menu)
+            finishText.SetActive(false);
+
         if(OnReset != null)
             OnReset();
-        StartPlanning();
+        if(gameMode != GameMode.Menu)        
+            StartPlanning();
     }
 }

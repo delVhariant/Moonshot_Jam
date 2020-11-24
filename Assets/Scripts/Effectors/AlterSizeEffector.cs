@@ -9,6 +9,9 @@ public class AlterSizeEffector : EffectorBase
     
     protected override void OnTriggerEnter(Collider other)
     {
+        if(!GameState.IsStarted())
+            return;
+        
         if(other.TryGetComponent<SubmarineScaler>(out var controller))
         {
             controller.Scale(scale, scaleTime);
@@ -17,7 +20,15 @@ public class AlterSizeEffector : EffectorBase
 
     override public void PerformAiming()
     {
-        EffectorSpawner.effectorSpawner.state = SpawnState.Idle;
-        EffectorSpawner.effectorSpawner.spawning = null;   
+        aiming = true;
+    }
+
+    void LateUpdate()
+    {
+        if(aiming)
+        {
+            aiming = false;
+            EffectorSpawner.effectorSpawner.FinishSpawn(transform);
+        }
     }
 }

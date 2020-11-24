@@ -15,6 +15,17 @@ public class ImpulseEffector : EffectorBase
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if(!GameState.IsStarted())
+            return;
+        
         other.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
+    }
+
+    protected override void OnTriggerStay(Collider other)
+    {
+        if(!GameState.IsStarted())
+            return;
+        
+        other.GetComponent<Rigidbody>().AddForce(transform.forward * force * Time.deltaTime, ForceMode.Impulse);
     }
 }

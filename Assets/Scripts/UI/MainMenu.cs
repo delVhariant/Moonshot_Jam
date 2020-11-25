@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,6 +10,10 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject levelSelect;
     public GameObject story;
+
+    public CinemachineVirtualCamera mainCam;
+    public CinemachineVirtualCamera levelCam;
+    public CinemachineVirtualCamera storyCam;
 
     public TMP_Dropdown levelTypeDropdown;
 
@@ -26,6 +31,9 @@ public class MainMenu : MonoBehaviour
         controlTypeDropdown.onValueChanged.AddListener(delegate {
             ControlTypeChanged(controlTypeDropdown);
         });
+
+        MainMenuClicked();
+        StopAllCoroutines();
     }
 
     
@@ -37,23 +45,39 @@ public class MainMenu : MonoBehaviour
 
     public void PlayClicked()
     {
+        levelCam.enabled = true;
+        mainCam.enabled = false;        
+        storyCam.enabled = false;
         mainMenu.SetActive(false);
-        levelSelect.SetActive(true);
         story.SetActive(false);
+        StartCoroutine(ChangeMenu(levelSelect));
     }
 
     public void MainMenuClicked()
     {
-        mainMenu.SetActive(true);
+        mainCam.enabled = true;
+        levelCam.enabled = false;
+        storyCam.enabled = false;
         levelSelect.SetActive(false);
         story.SetActive(false);
+        StartCoroutine(ChangeMenu(mainMenu));
     }
 
     public void StoryClicked()
     {
+        storyCam.enabled = true;
+        mainCam.enabled = false;
+        levelCam.enabled = false;        
         mainMenu.SetActive(false);
         levelSelect.SetActive(false);
-        story.SetActive(true);
+        //story.SetActive(true);
+        StartCoroutine(ChangeMenu(story));
+    }
+
+    public IEnumerator ChangeMenu(GameObject menuSection)
+    {
+        yield return new WaitForSeconds(2);
+        menuSection.SetActive(true);
     }
 
     public void LevelTypeChanged(TMP_Dropdown change)

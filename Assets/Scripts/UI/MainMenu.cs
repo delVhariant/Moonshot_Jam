@@ -32,8 +32,10 @@ public class MainMenu : MonoBehaviour
             ControlTypeChanged(controlTypeDropdown);
         });
 
+        // Make sire the main menu is visible.
         MainMenuClicked();
         StopAllCoroutines();
+        mainMenu.SetActive(true);
     }
 
     
@@ -85,11 +87,19 @@ public class MainMenu : MonoBehaviour
         Debug.Log($"Clicked: {change.value}");
         if(change.value == 0)
         {
-            controlTypeDropdown.transform.parent.gameObject.SetActive(true);
+            controlTypeDropdown.enabled = true;
+            //controlTypeDropdown.transform.parent.gameObject.SetActive(true);
+
+        }
+        else if(change.value==1)
+        {
+            controlTypeDropdown.SetValueWithoutNotify(0);
+            controlTypeDropdown.enabled = false;
         }
         else
         {
-            controlTypeDropdown.transform.parent.gameObject.SetActive(false);
+            controlTypeDropdown.SetValueWithoutNotify(1);
+            controlTypeDropdown.enabled = false;
         }
     }
 

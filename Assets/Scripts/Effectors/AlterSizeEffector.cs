@@ -14,6 +14,7 @@ public class AlterSizeEffector : EffectorBase
         
         if(other.TryGetComponent<SubmarineScaler>(out var controller))
         {
+            source.PlayOneShot(effectSound);
             controller.Scale(scale, scaleTime);
         }
     }

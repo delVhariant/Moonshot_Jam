@@ -5,7 +5,8 @@ using UnityEngine;
 public class EffectorBase : MonoBehaviour
 {
     public bool aiming = false;
-
+    public AudioSource source;
+    public AudioClip effectSound;
      void Awake()
     {
 
@@ -14,7 +15,7 @@ public class EffectorBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+    //source = GetComponent<AudioSource>();
     }
 
 

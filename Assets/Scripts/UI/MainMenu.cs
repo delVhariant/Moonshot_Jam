@@ -18,6 +18,10 @@ public class MainMenu : MonoBehaviour
     public TMP_Dropdown levelTypeDropdown;
 
     public TMP_Dropdown controlTypeDropdown;
+
+    public GameObject normalLevels;
+    public GameObject challengeLevels;
+    public GameObject metroidLevels;
     
     // Start is called before the first frame update
     void Start()
@@ -84,28 +88,38 @@ public class MainMenu : MonoBehaviour
 
     public void LevelTypeChanged(TMP_Dropdown change)
     {
-        Debug.Log($"Clicked: {change.value}");
-        if(change.value == 0)
+        // Normal = 0;
+        // Challege = 1;
+        // MetroidVania == 2;
+        switch(change.value)
         {
-            controlTypeDropdown.enabled = true;
-            //controlTypeDropdown.transform.parent.gameObject.SetActive(true);
+            case 0:
+                controlTypeDropdown.enabled = true;
+                normalLevels.SetActive(true);
+                challengeLevels.SetActive(false);
+                metroidLevels.SetActive(false);
+                break;
+            case 1:
+                controlTypeDropdown.SetValueWithoutNotify(0);
+                controlTypeDropdown.enabled = false;
+                normalLevels.SetActive(false);
+                challengeLevels.SetActive(true);
+                metroidLevels.SetActive(false);
+                break;
+            case 2:
+                controlTypeDropdown.SetValueWithoutNotify(1);
+                controlTypeDropdown.enabled = false;
+                normalLevels.SetActive(false);
+                challengeLevels.SetActive(false);
+                metroidLevels.SetActive(true);
+                break;
 
-        }
-        else if(change.value==1)
-        {
-            controlTypeDropdown.SetValueWithoutNotify(0);
-            controlTypeDropdown.enabled = false;
-        }
-        else
-        {
-            controlTypeDropdown.SetValueWithoutNotify(1);
-            controlTypeDropdown.enabled = false;
         }
     }
 
     //Ouput the new value of the Dropdown into Text
     public void ControlTypeChanged(TMP_Dropdown change)
     {
-        Debug.Log($"Clicked: {change.value}");
+        // Debug.Log($"Clicked: {change.value}");
     }
 }

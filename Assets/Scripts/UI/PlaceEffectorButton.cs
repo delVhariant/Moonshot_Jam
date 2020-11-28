@@ -8,13 +8,20 @@ public class PlaceEffectorButton : MonoBehaviour
     public ShowRadial radialMenu;
     public EffectorSpawner spawner;
     public GameObject effectorPrefab;
+    public float threshold = 0.05f;
 
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        
         if(GameState.gameManager.gameMode == GameMode.Normal && effectorPrefab)
         {
             GetComponent<Button>().enabled = true;
+        }
+        if(!effectorPrefab)
+        {
+            this.enabled = false;
         }
     }
 

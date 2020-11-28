@@ -2568,14 +2568,6 @@ PrefabInstance:
       propertyPath: arrow
       value: 
       objectReference: {fileID: 1835959622}
-    - target: {fileID: 6057049862301193850, guid: ab86e14d69782b34aa9aecaaa3dcafe1, type: 3}
-      propertyPath: gameMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6057049862301193850, guid: ab86e14d69782b34aa9aecaaa3dcafe1, type: 3}
-      propertyPath: controlType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6057049862301193852, guid: ab86e14d69782b34aa9aecaaa3dcafe1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2664,10 +2656,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 583530808}
-    - target: {fileID: 6057049863654156308, guid: ab86e14d69782b34aa9aecaaa3dcafe1, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: eb1ae32cb2f5a2649806679850f84790, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab86e14d69782b34aa9aecaaa3dcafe1, type: 3}
 --- !u!1001 &6976444707477840305

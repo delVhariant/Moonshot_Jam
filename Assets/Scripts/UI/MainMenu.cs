@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,9 +11,17 @@ public class MainMenu : MonoBehaviour
     public GameObject levelSelect;
     public GameObject story;
 
+    public CinemachineVirtualCamera mainCam;
+    public CinemachineVirtualCamera levelCam;
+    public CinemachineVirtualCamera storyCam;
+
     public TMP_Dropdown levelTypeDropdown;
 
     public TMP_Dropdown controlTypeDropdown;
+
+    public GameObject normalLevels;
+    public GameObject challengeLevels;
+    public GameObject metroidLevels;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +35,11 @@ public class MainMenu : MonoBehaviour
         controlTypeDropdown.onValueChanged.AddListener(delegate {
             ControlTypeChanged(controlTypeDropdown);
         });
+
+        // Make sire the main menu is visible.
+        MainMenuClicked();
+        StopAllCoroutines();
+        mainMenu.SetActive(true);
     }
 
     
@@ -37,41 +51,75 @@ public class MainMenu : MonoBehaviour
 
     public void PlayClicked()
     {
+        levelCam.enabled = true;
+        mainCam.enabled = false;        
+        storyCam.enabled = false;
         mainMenu.SetActive(false);
-        levelSelect.SetActive(true);
         story.SetActive(false);
+        StartCoroutine(ChangeMenu(levelSelect));
     }
 
     public void MainMenuClicked()
     {
-        mainMenu.SetActive(true);
+        mainCam.enabled = true;
+        levelCam.enabled = false;
+        storyCam.enabled = false;
         levelSelect.SetActive(false);
         story.SetActive(false);
+        StartCoroutine(ChangeMenu(mainMenu));
     }
 
     public void StoryClicked()
     {
+        storyCam.enabled = true;
+        mainCam.enabled = false;
+        levelCam.enabled = false;        
         mainMenu.SetActive(false);
         levelSelect.SetActive(false);
-        story.SetActive(true);
+        //story.SetActive(true);
+        StartCoroutine(ChangeMenu(story));
+    }
+
+    public IEnumerator ChangeMenu(GameObject menuSection)
+    {
+        yield return new WaitForSeconds(2);
+        menuSection.SetActive(true);
     }
 
     public void LevelTypeChanged(TMP_Dropdown change)
     {
-        Debug.Log($"Clicked: {change.value}");
-        if(change.value == 0)
+        // Normal = 0;
+        // Challege = 1;
+        // MetroidVania == 2;
+        switch(change.value)
         {
-            controlTypeDropdown.transform.parent.gameObject.SetActive(true);
-        }
-        else
-        {
-            controlTypeDropdown.transform.parent.gameObject.SetActive(false);
+            case 0:
+                controlTypeDropdown.enabled = true;
+                normalLevels.SetActive(true);
+                challengeLevels.SetActive(false);
+                metroidLevels.SetActive(false);
+                break;
+            case 1:
+                controlTypeDropdown.SetValueWithoutNotify(0);
+                controlTypeDropdown.enabled = false;
+                normalLevels.SetActive(false);
+                challengeLevels.SetActive(true);
+                metroidLevels.SetActive(false);
+                break;
+            case 2:
+                controlTypeDropdown.SetValueWithoutNotify(1);
+                controlTypeDropdown.enabled = false;
+                normalLevels.SetActive(false);
+                challengeLevels.SetActive(false);
+                metroidLevels.SetActive(true);
+                break;
+
         }
     }
 
     //Ouput the new value of the Dropdown into Text
     public void ControlTypeChanged(TMP_Dropdown change)
     {
-        Debug.Log($"Clicked: {change.value}");
+        // Debug.Log($"Clicked: {change.value}");
     }
 }

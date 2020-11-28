@@ -79,7 +79,8 @@ public class TeleporterEffector : EffectorBase
         timer=1;
         if(pair && !isExit)
         {
-            source.PlayOneShot(effectSound);
+            if(source && effectSound)
+                source.PlayOneShot(effectSound);
             teleportTarget = other.gameObject;
             velocity = other.GetComponent<Rigidbody>().velocity;
             angularVelocity = other.GetComponent<Rigidbody>().angularVelocity;

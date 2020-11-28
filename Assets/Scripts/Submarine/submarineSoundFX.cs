@@ -9,7 +9,8 @@ public class submarineSoundFX : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        source.PlayOneShot(bumpSound);
+        if(source && bumpSound)
+                source.PlayOneShot(bumpSound);
     }
     void Start()
     {

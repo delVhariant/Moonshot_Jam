@@ -77,6 +77,9 @@ public class EffectorSpawner : MonoBehaviour
         if(GameState.gameManager.controlType == ControlType.RealTime)
         {
             GameState.gameManager.realTimeTarget.RemoveMember(spawned);
+
+            //GameState.gameManager.realTimeTarget.m_Targets = new Cinemachine.CinemachineTargetGroup.Target(GameState.gameManager.realTimeTarget.m_Targets[0]);
+            
             GameState.gameManager.ResetTimeScale();
         }
         spawned.GetComponentInChildren<EffectorHighlighter>().enabled = true;
@@ -88,6 +91,10 @@ public class EffectorSpawner : MonoBehaviour
             {
                 //GameState.gameManager.planningCam.Follow = null;
                 CameraLook(null);
+                if(GameState.gameManager.controlType == ControlType.RealTime)
+                {
+                    GameState.gameManager.realTimeTarget.RemoveMember(spawning.transform);
+                }
                 GameObject.Destroy(spawning.gameObject);
                 spawning = null;
                 state = SpawnState.Idle;
@@ -102,7 +109,8 @@ public class EffectorSpawner : MonoBehaviour
     {
         if(GameState.gameManager.controlType == ControlType.RealTime)
         {
-            GameState.gameManager.realTimeTarget.AddMember(spawn, 1, 1);
+            if(spawn)
+                GameState.gameManager.realTimeTarget.AddMember(spawn, 1, 1);
         }
         else if(GameState.gameManager.controlType == ControlType.Plan)
         {

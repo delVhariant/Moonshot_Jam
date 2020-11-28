@@ -17,7 +17,8 @@ public class ImpulseEffector : EffectorBase
     {
         if(!GameState.IsStarted())
             return;
-        source.PlayOneShot(effectSound);
+        if(source && effectSound)
+                source.PlayOneShot(effectSound);
         other.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
     }
 

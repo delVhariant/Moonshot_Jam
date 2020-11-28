@@ -37,4 +37,9 @@ public class Resetter : MonoBehaviour
         transform.rotation = startRot;
         transform.localScale = startScale;
     }
+
+    void OnDestroy()
+    {
+        GameState.OnReset -= ResetObject;
+    }
 }

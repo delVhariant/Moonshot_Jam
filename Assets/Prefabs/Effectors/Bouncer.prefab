@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591ef9d849f33424b903409b6019a96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMesh: {fileID: 0}
-  effector: {fileID: 0}
+  highlightMesh: {fileID: 7429302479901625843}
+  effector: {fileID: 6731365576059056256}
 --- !u!135 &1491770912204334410
 SphereCollider:
   m_ObjectHideFlags: 0

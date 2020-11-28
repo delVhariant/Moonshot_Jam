@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncePadStuff : MonoBehaviour
+public class BouncePadStuff : EffectorBase
 {
-    AudioSource source;
+    //AudioSource source;
     public Animator animator;
-    public AudioClip bumpSound;
+    //public AudioClip bumpSound;
 
     private void OnCollisionEnter(Collision collision)
     {
-        source.PlayOneShot(bumpSound);
+        if(source && effectSound)
+                source.PlayOneShot(effectSound);
         animator.SetTrigger("Bounce");
-        Debug.Log("Bounce");
+        //Debug.Log("Bounce");
     }
     void Start()
     {

@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: 677195268}
   - component: {fileID: 2056038575236261056}
   - component: {fileID: 588386038}
-  m_Layer: 0
+  - component: {fileID: 313876349}
+  - component: {fileID: 313876357}
+  m_Layer: 9
   m_Name: ProtoSub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,10 +66,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: f4e67a3c87c1775419afd89a07e1d673, type: 2}
   m_IsTrigger: 0
   m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2.6
+  m_Radius: 1
+  m_Height: 3.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0.054, z: -0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &304206369265371459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139371a02039a1499df88fbb6477862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapBack: 1
 --- !u!114 &7921779734656349034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa0c7b62b394da4fa27be44150da951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapBack: 1
 --- !u!114 &677195268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +216,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bumpSound: {fileID: 8300000, guid: 58549397a99326740af7e101bf1cd0ac, type: 3}
+--- !u!114 &313876349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528669222317026896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50c3bc1544dec244aa77041433979c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy:
+    serializedVersion: 2
+    m_Bits: 4096
+  rb: {fileID: 0}
+  baseMass: 0
+--- !u!136 &313876357
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528669222317026896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.1
+  m_Height: 4
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7181135331962238511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 587513462645ea34f9b3f697f16691f2, type: 3}
       propertyPath: m_Name
       value: SubMarine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 587513462645ea34f9b3f697f16691f2, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 587513462645ea34f9b3f697f16691f2, type: 3}

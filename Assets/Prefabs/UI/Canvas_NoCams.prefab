@@ -1370,6 +1370,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 4409378358948712598, guid: ae7733488fc7fab43b3ad1276984fd0c, type: 3}
   limitText: {fileID: 6387556786936819901}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556786712502172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1734,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 8126824147416310743, guid: d75b83c461db0ec4f93c5f1ba62be15a, type: 3}
   limitText: {fileID: 6387556787999119092}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556786936819899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2266,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 1996184040351302718, guid: 025e349448842d440b6da7d41f2fe6a8, type: 3}
   limitText: {fileID: 6387556787152641071}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556787496327689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,6 +2720,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 0}
   limitText: {fileID: 0}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556787999119090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,6 +2966,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 6414230836366216230, guid: bf3f60787a1bc8a4aaf15484a176e61d, type: 3}
   limitText: {fileID: 6387556787160825424}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556788401916751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,6 +3089,8 @@ MonoBehaviour:
   panel: {fileID: 6387556788467105191}
   spawner: {fileID: 6387556788401916758}
   visible: 0
+  canvas: {fileID: 6387556788401916754}
+  canvasScaler: {fileID: 6387556788401916753}
 --- !u!114 &6387556788401916757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3306,6 +3313,7 @@ MonoBehaviour:
   effectorPrefab: {fileID: 4409378358948712598, guid: 5acd4f413192a2a4c958ba642877290d, type: 3}
   limitText: {fileID: 6387556787496327691}
   threshold: 0.2
+  limit: -1
 --- !u!1 &6387556788467105190
 GameObject:
   m_ObjectHideFlags: 0

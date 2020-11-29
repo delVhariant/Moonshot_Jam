@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+using TMPro;
 using Cinemachine;
 
 public enum GamePhase 
@@ -60,7 +60,10 @@ public class GameState : MonoBehaviour
 
     public ControlType controlType = ControlType.Plan;
 
-    public Text popup;
+    public TMP_Text popup;
+
+    public GameObject escapeMenu;
+    public ShowRadial radial;
 
     void Awake()
     {
@@ -118,9 +121,45 @@ public class GameState : MonoBehaviour
 
     }
 
+    public void Retry()
+    {
+        ResetTimeScale();
+        escapeMenu.SetActive(false);
+        if(OnReset != null)
+            OnReset();
+        if(gameMode != GameMode.Menu)        
+            StartPlanning();
+    }
+
     public void FullReset()
     {
+        ResetTimeScale();
+        if(LoadingScreen.Instance)
+        {
+            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single));
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
+    }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        ResetTimeScale();
+        if(LoadingScreen.Instance)
+        {
+            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single));
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        }
     }
 
     public void ShowPopup(string msg)
@@ -144,6 +183,10 @@ public class GameState : MonoBehaviour
 
     public void StartAiming()
     {
+        if(radial)
+        {
+            radial.Hide();
+        }
         if(controlType != ControlType.RealTime)
         {
             aimingCam.gameObject.SetActive(true);
@@ -186,6 +229,28 @@ public class GameState : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && escapeMenu && gameMode != GameMode.Menu)
+        {
+            if(!escapeMenu.activeSelf)
+            {
+                EffectorSpawner.effectorSpawner.CancelSpawn();
+                if(radial)
+                {
+                    radial.Hide();
+                }
+                SlowTime();
+                escapeMenu.SetActive(true);
+            }
+            else
+            {
+                ResetTimeScale();
+                escapeMenu.SetActive(false);
+            }
+        }
+        
+    }
 
     void LateUpdate()
     {
@@ -221,4 +286,11 @@ public class GameState : MonoBehaviour
         if(gameMode != GameMode.Menu)        
             StartPlanning();
     }
+
+    void OnDestroy()
+    {
+        SubmarineInput.OnLaunch -= StartRun;
+    }
+
+
 }

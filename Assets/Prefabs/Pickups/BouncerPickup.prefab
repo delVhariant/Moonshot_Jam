@@ -98,22 +98,6 @@ MonoBehaviour:
   spinX: 1
   spinY: 2
   spinZ: 3
---- !u!114 &1549514630536859675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819896842136497525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001f588d40a719e4399c48a70f65e3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  spinX: 0
-  spinY: 2
-  spinZ: 0
 --- !u!1 &1549514631179384306
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1549514631179384304}
   - component: {fileID: 1549514631179384307}
+  - component: {fileID: 1188587310}
   m_Layer: 0
   m_Name: BouncerPickup
   m_TagString: Untagged
@@ -160,6 +145,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1188587310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549514631179384306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b25b0aabd72ed48840ba1476f5f559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectorButton: {fileID: 0}
+  message: 'You Obtained: BouncePad!'
+--- !u!114 &1549514630536859675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819896842136497525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001f588d40a719e4399c48a70f65e3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  spinX: 0
+  spinY: 2
+  spinZ: 0
 --- !u!1001 &1549514630536859684
 PrefabInstance:
   m_ObjectHideFlags: 0

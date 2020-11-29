@@ -25,8 +25,8 @@ ModelImporter:
       74: 6049260447628096897
     second: BasicPropSkele|mermaidStart
   - first:
-      74: 7812548265703463159
-    second: BasicPropSkele|mermaidStart.001
+      74: 5823195442215020058
+    second: BasicPropSkele|mermaidSwim
   - first:
       74: 8752469779282238285
     second: BasicPropSkele|PoseLib.002
@@ -301,11 +301,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: BasicPropSkele|mermaidStart.001
-      takeName: BasicPropSkele|mermaidStart.001
+      name: BasicPropSkele|mermaidSwim
+      takeName: BasicPropSkele|mermaidSwim
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -16,6 +16,12 @@ public class SubmarineScaler : MonoBehaviour
     Rigidbody rb;
 
     ObjectScaler scaler;
+
+    public bool snapBack = false;
+    bool hasScaled = false;
+    float timeToSnap = 0f;
+    float snapDelay = 5f;
+
     
     // Start is called before the first frame update
     void Start()
@@ -35,8 +41,20 @@ public class SubmarineScaler : MonoBehaviour
             {
                 rb.mass = baseMass * targetScale;
                 performScaling = false;
+                hasScaled = true;
             }
 
+        }
+        // check if should snapBack to OG size
+        if (snapBack && hasScaled && targetScale != 1f)
+        {
+            timeToSnap -= Time.deltaTime;
+            if(timeToSnap <= 0)
+            {   
+                Scale(1,scaleSpeed);
+                hasScaled = false;
+                timeToSnap = 0f;
+            }
         }
     }
 
@@ -46,5 +64,11 @@ public class SubmarineScaler : MonoBehaviour
         targetScale = scale;
         performScaling = true;
         scaler.Scale(scale, time);
+        // snap back to OG size delay
+        if( snapBack)
+        {
+            hasScaled = true;
+            timeToSnap = snapDelay;
+        }
     }
 }

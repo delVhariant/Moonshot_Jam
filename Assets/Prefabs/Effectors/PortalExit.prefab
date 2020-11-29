@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591ef9d849f33424b903409b6019a96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMesh: {fileID: 0}
+  highlightMesh: {fileID: 7715037395551669218}
   effector: {fileID: 6414230836366216234}
 --- !u!135 &6595991158788953940
 SphereCollider:
@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139371a02039a1499df88fbb6477862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapBack: 0
 --- !u!1 &6414230836366216230
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: 0
+  source: {fileID: 0}
+  effectSound: {fileID: 0}
   exitPrefab: {fileID: 0}
   pair: {fileID: 0}
   scaler: {fileID: 8391097658818255989}

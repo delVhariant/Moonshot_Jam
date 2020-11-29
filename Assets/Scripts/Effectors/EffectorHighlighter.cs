@@ -33,7 +33,7 @@ public class EffectorHighlighter : MonoBehaviour
     
     void OnMouseOver()
     {
-        if(highlightMesh && (EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime)
+        if(highlightMesh && (EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime && !ShowRadial.Instance.visible)
         {
             // Reset the color of the GameObject back to normal
             highlightMesh.enabled = true;
@@ -42,7 +42,7 @@ public class EffectorHighlighter : MonoBehaviour
 
     void OnMouseDown()
     {
-        if((EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime)
+        if((EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime && !ShowRadial.Instance.visible)
         {
             if(EffectorSpawner.effectorSpawner.spawning==null)
                 select = true;

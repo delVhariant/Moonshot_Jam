@@ -25,6 +25,7 @@ public enum GameMode
 {
     MetroidVania,
     Normal,
+    Challenge,
     Menu
 }
 
@@ -78,7 +79,9 @@ public class GameState : MonoBehaviour
         }
 
         if(gameMode != GameMode.Menu)
+        {
             planButton = phaseText.GetComponentInChildren<Button>();
+        }
     }
     
     public void ResetTimeScale()
@@ -117,7 +120,9 @@ public class GameState : MonoBehaviour
     {
         SubmarineInput.OnLaunch += StartRun;
         if(gameMode != GameMode.Menu)
+        {           
             StartPlanning();
+        }
 
     }
 
@@ -255,7 +260,7 @@ public class GameState : MonoBehaviour
 
     void LateUpdate()
     {
-        if(gamePhase == GamePhase.Execution && sub && (gameMode == GameMode.Normal || gameMode == GameMode.Menu))
+        if(gamePhase == GamePhase.Execution && sub && (gameMode != GameMode.MetroidVania))
         {
             if(Vector3.Distance(subPos,sub.position) < minChangeNumber)
             {

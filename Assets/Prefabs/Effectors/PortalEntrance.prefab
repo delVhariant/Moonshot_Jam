@@ -1120,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: 0
+  type: 4
   source: {fileID: -4561885563992370120}
   effectSound: {fileID: 8300000, guid: 9639f221bf80a7746a9ad19c56e9eda9, type: 3}
   exitPrefab: {fileID: 6414230836366216230, guid: dc865596c846036499745a25e605031f, type: 3}

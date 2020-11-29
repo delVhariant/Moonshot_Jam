@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: 0
+  type: 2
   source: {fileID: 3617938408448605677}
   effectSound: {fileID: 8300000, guid: f8e71103adb3d1e479f6181a84ef541f, type: 3}
   scale: 0.5

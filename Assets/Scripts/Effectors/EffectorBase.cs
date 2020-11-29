@@ -2,9 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EffectorType
+{
+    ImpulseEffector,
+    BouncePad,
+    Shrinker,
+    Embiggener,
+    TeleporterEntrance,
+    TeleporterExit
+}
+
+
 public class EffectorBase : MonoBehaviour
 {
     public bool aiming = false;
+    public EffectorType type;
     public AudioSource source;
     public AudioClip effectSound;
      void Awake()
@@ -61,7 +73,7 @@ public class EffectorBase : MonoBehaviour
 
     public virtual void MoveEffector()
     {
-        EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
+        EffectorSpawner.effectorSpawner.MoveSpawn(this);
     }
 
 }

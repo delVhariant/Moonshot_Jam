@@ -46,7 +46,33 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch(controlTypeDropdown.value)
+        {
+            case 0:
+                PlayerPrefs.SetInt("controls", (int)ControlType.Plan);
+                break;
+            case 1:
+                PlayerPrefs.SetInt("controls", (int)ControlType.RealTime);
+                break;
+
+        }
+
+        // Normal = 0;
+        // Challege = 1;
+        // MetroidVania == 2;
+        switch(levelTypeDropdown.value)
+        {
+            case 0:
+                PlayerPrefs.SetInt("gameMode", (int)GameMode.Normal);
+                break;
+            case 1:
+                PlayerPrefs.SetInt("gameMode", (int)GameMode.Challenge);
+                break;
+            case 2:
+                PlayerPrefs.SetInt("gameMode", (int)GameMode.MetroidVania);
+                break;
+
+        }
     }
 
     public void PlayClicked()
@@ -88,9 +114,6 @@ public class MainMenu : MonoBehaviour
 
     public void LevelTypeChanged(TMP_Dropdown change)
     {
-        // Normal = 0;
-        // Challege = 1;
-        // MetroidVania == 2;
         switch(change.value)
         {
             case 0:
@@ -98,6 +121,7 @@ public class MainMenu : MonoBehaviour
                 normalLevels.SetActive(true);
                 challengeLevels.SetActive(false);
                 metroidLevels.SetActive(false);
+                
                 break;
             case 1:
                 controlTypeDropdown.SetValueWithoutNotify(0);

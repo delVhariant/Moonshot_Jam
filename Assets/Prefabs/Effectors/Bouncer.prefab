@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: 0
+  type: 1
   source: {fileID: 7135462303796653387}
   effectSound: {fileID: 8300000, guid: f3893a5094eaa9447a21b9347d06c130, type: 3}
   animator: {fileID: 6725874620217943970}

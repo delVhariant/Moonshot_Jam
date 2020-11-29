@@ -110,7 +110,6 @@ public class TeleporterEffector : EffectorBase
             transform.LookAt(point);
             if(Input.GetMouseButtonDown(0))
             {
-                
                 pair.GetComponentInChildren<EffectorHighlighter>().enabled = true;
                 EffectorSpawner.effectorSpawner.FinishSpawn(transform);
             }
@@ -143,12 +142,13 @@ public class TeleporterEffector : EffectorBase
             GameObject.Destroy(pair.gameObject);
             pair = null;
         }
-        EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
+        EffectorSpawner.effectorSpawner.MoveSpawn(this);
+        //EffectorSpawner.effectorSpawner.SpawnNew(gameObject);
     }
 
     void OnDestroy()
     {
-        if(pair && isExit)
+        if(pair && isExit && EffectorSpawner.effectorSpawner.spawning != pair)
         {
             GameObject.Destroy(pair.gameObject);
         }

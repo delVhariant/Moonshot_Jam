@@ -16,6 +16,18 @@ public class EffectorSpawner : MonoBehaviour
 
     public EffectorBase spawning;
 
+    public int impulseLimit;
+    public PlaceEffectorButton impulseButton;
+    public int bounceLimit;
+    public PlaceEffectorButton bounceButton;
+    public int bigLimit;
+    public PlaceEffectorButton bigButton;
+    public int smallLimit;
+    public PlaceEffectorButton smallButton;
+    public int teleLimit;
+    public PlaceEffectorButton teleButton;
+
+
     void Awake()
     {
         // Shitty singleton code, not great practice but whatevs
@@ -32,7 +44,14 @@ public class EffectorSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(GameState.gameManager.gameMode == GameMode.Challenge)
+        {
+            impulseButton.SetLimit(impulseLimit);
+            bounceButton.SetLimit(bounceLimit);
+            bigButton.SetLimit(bigLimit);
+            smallButton.SetLimit(smallLimit);
+            teleButton.SetLimit(teleLimit);
+        }
     }
 
     // Update is called once per frame
@@ -70,6 +89,37 @@ public class EffectorSpawner : MonoBehaviour
         state = SpawnState.Placing;
     }
 
+    public void MoveSpawn(EffectorBase effector)
+    {
+        if(GameState.gameManager.gameMode == GameMode.Challenge)
+        {
+            switch(effector.type)
+            {
+                case EffectorType.ImpulseEffector:
+                    impulseButton.Remove();
+                    break;
+                case EffectorType.BouncePad:
+                    bounceButton.Remove();
+                    break;
+                case EffectorType.Embiggener:
+                    bigButton.Remove();
+                    break;
+                case EffectorType.Shrinker:
+                    smallButton.Remove();
+                    break;
+                case EffectorType.TeleporterExit:
+                case EffectorType.TeleporterEntrance:
+                    teleButton.Remove();
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        SpawnNew(effector.gameObject);
+
+    }
+
     public void FinishSpawn(Transform spawned)
     {
         spawning = null;
@@ -77,10 +127,31 @@ public class EffectorSpawner : MonoBehaviour
         if(GameState.gameManager.controlType == ControlType.RealTime)
         {
             GameState.gameManager.realTimeTarget.RemoveMember(spawned);
-
-            //GameState.gameManager.realTimeTarget.m_Targets = new Cinemachine.CinemachineTargetGroup.Target(GameState.gameManager.realTimeTarget.m_Targets[0]);
-            
             GameState.gameManager.ResetTimeScale();
+        }
+        
+        if(GameState.gameManager.gameMode == GameMode.Challenge)
+        {
+            switch(spawned.GetComponent<EffectorBase>().type)
+            {
+                case EffectorType.ImpulseEffector:
+                    impulseButton.Spawn();
+                    break;
+                case EffectorType.BouncePad:
+                    bounceButton.Spawn();
+                    break;
+                case EffectorType.Embiggener:
+                    bigButton.Spawn();
+                    break;
+                case EffectorType.Shrinker:
+                    smallButton.Spawn();
+                    break;
+                case EffectorType.TeleporterExit:
+                    teleButton.Spawn();
+                    break;
+                default:
+                    break;
+            }
         }
         spawned.GetComponentInChildren<EffectorHighlighter>().enabled = true;
     }

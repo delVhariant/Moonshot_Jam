@@ -378,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: 0
+  type: 5
   source: {fileID: 0}
   effectSound: {fileID: 0}
   exitPrefab: {fileID: 0}

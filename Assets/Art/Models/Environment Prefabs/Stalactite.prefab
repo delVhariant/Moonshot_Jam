@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 219472207491565102}
   - component: {fileID: 2661433344957084388}
   - component: {fileID: 4997982856082696859}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stalactite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

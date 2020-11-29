@@ -211,6 +211,7 @@ public class GameState : MonoBehaviour
     {        
         if(controlType != ControlType.RealTime)
         {
+            realTimeCam.gameObject.SetActive(false);
             aimingCam.gameObject.SetActive(false);
             planningCam.gameObject.SetActive(true);
             planningCam.Follow = sub;

@@ -17,7 +17,7 @@ public class PlaceEffectorButton : MonoBehaviour
         
         if(GameState.gameManager.gameMode == GameMode.Normal && effectorPrefab)
         {
-            GetComponent<Button>().enabled = true;
+            GetComponent<Button>().interactable = true;
         }
         if(!effectorPrefab)
         {

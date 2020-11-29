@@ -25,7 +25,7 @@ public class EffectorPickup : MonoBehaviour
         if(!GameState.IsStarted())
             return;
 
-        effectorButton.enabled = true;
+        effectorButton.interactable = true;
         GameState.gameManager.ShowPopup(message);
         GameObject.Destroy(gameObject);
     }

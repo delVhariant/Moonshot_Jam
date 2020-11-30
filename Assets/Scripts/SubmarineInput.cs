@@ -23,12 +23,13 @@ public class SubmarineInput : MonoBehaviour
         //myInput = GetComponent<PlayerInput>();
         /*controls = new Controls();
         controls.Enable();*/
+        GameState.gameManager.sub = Submarine;
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        GameState.gameManager.sub = Submarine;
+        
     }
 
     // Update is called once per frame
@@ -89,6 +90,7 @@ public class SubmarineInput : MonoBehaviour
                         sprites[i].color = c;
                     }
                 }
+                lastArrow.transform.localScale = arrow.transform.localScale;
                 lastArrow.transform.position = arrow.transform.position;
                 lastArrow.transform.localRotation = arrow.transform.localRotation;
                 lastArrow.SetActive(false);

@@ -525,6 +525,7 @@ GameObject:
   - component: {fileID: 5276393708001900898}
   - component: {fileID: 5276393708001900899}
   - component: {fileID: 5276393708001900908}
+  - component: {fileID: 8883631797084993560}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -540,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276393708001900909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.922287, y: -20.399994, z: 1.5405731}
+  m_LocalPosition: {x: -4.922287, y: -4.2, z: 1.5405731}
   m_LocalScale: {x: 100, y: 2, z: 100}
   m_Children: []
   m_Father: {fileID: 5471987373008215709}
@@ -603,11 +604,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276393708001900909}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8883631797084993560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276393708001900909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ed83589bfc0234b82b8c761155bfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 5276393707410076959}
+  explosionSound: {fileID: 8300000, guid: bc1678ccaafbf1f4486937f0ce075ff2, type: 3}
 --- !u!1 &5276393708404931648
 GameObject:
   m_ObjectHideFlags: 0

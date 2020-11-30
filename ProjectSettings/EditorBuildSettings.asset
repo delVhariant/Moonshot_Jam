@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JakeLevel1.unity
     guid: c4a0b87bcb084e24180484489cff9a0f
+  - enabled: 1
+    path: Assets/Scenes/BioLevel1.unity
+    guid: 5f5896249bda4774fb50e2e136dbd1c0
+  - enabled: 1
+    path: Assets/Scenes/LavaLevel.unity
+    guid: b3ae4ffc6a8463a41955681ebfcdfc90
+  - enabled: 1
+    path: Assets/Scenes/MultiBiomeLevel1.unity
+    guid: a7dbefe1999d201488ab7a90323deca6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8fe1dd638a965ba468994b7ec2546a38, type: 2}

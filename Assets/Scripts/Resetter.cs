@@ -12,7 +12,7 @@ public class Resetter : MonoBehaviour
     Vector3 startScale;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameState.OnReset += ResetObject;
         rb = gameObject.GetComponent<Rigidbody>();
@@ -27,6 +27,8 @@ public class Resetter : MonoBehaviour
 
     public void ResetObject()
     {
+        if(!gameObject.activeSelf)
+            gameObject.SetActive(true);
         if(rb)
         {
             rb.velocity = Vector3.zero;

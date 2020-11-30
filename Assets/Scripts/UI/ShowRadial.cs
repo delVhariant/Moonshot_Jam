@@ -34,34 +34,6 @@ public class ShowRadial : MonoBehaviour
         
     }
 
-    private Vector2 GetScale(float width, float height)
-    {
-        var scalerReferenceResolution = canvasScaler.referenceResolution;
-        var widthScale = width / scalerReferenceResolution.x;
-        var heightScale = height / scalerReferenceResolution.y;
-        return new Vector2(widthScale, heightScale);
-        
-        /*switch (canvasScaler.screenMatchMode)
-        {
-            case CanvasScaler.ScreenMatchMode.MatchWidthOrHeight:
-                var matchWidthOrHeight = canvasScaler.matchWidthOrHeight;
-        
-                return Mathf.Pow(widthScale, 1f - matchWidthOrHeight)*
-                    Mathf.Pow(heightScale, matchWidthOrHeight);
-            
-            case CanvasScaler.ScreenMatchMode.Expand:
-                return Mathf.Min(widthScale, heightScale);
-            
-            case CanvasScaler.ScreenMatchMode.Shrink:
-                return Mathf.Max(widthScale, heightScale);
-            
-            default:
-                Debug.Log("Error detecting screen match mode.");
-                return 0;
-        }*/
-    
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -69,10 +41,13 @@ public class ShowRadial : MonoBehaviour
         {
             if(!visible && spawner.state == SpawnState.Idle && Input.GetMouseButtonDown(1))
             {
-                Vector2 scale = (panel.rect.size * canvas.scaleFactor)/2;
-                Vector2 screenLoc = new Vector2(Mathf.Clamp(Input.mousePosition.x, scale.x, Screen.width-scale.x), Mathf.Clamp(Input.mousePosition.y, scale.y, Screen.height-scale.y));
+                Vector2 scale = (panel.rect.size)/2;
+                Vector2 clicked = Input.mousePosition;
+                clicked /= canvas.scaleFactor;
+                Vector2 scaledScreen = new Vector2(Screen.width, Screen.height) / canvas.scaleFactor;
+                Vector2 screenLoc = new Vector2(Mathf.Clamp(clicked.x, scale.x, scaledScreen.x-scale.x), Mathf.Clamp(clicked.y, scale.y, scaledScreen.y-scale.y));
                 
-                //Debug.Log($"Clicked: {Input.mousePosition} Width: {Screen.width} x Height: {Screen.height} on Canvas: {canvas.pixelRect.size}. Panel: {panel.rect.size}, size on screen: {panel.rect.size * canvas.scaleFactor}. ScreenLoc: {screenLoc}");
+                // Debug.Log($"Clicked: {clicked} Canvas: {canvas.pixelRect.size}. Panel: {panel.rect.size}, size on screen: {panel.rect.size * canvas.scaleFactor}. ScreenLoc: {screenLoc} Clamp: {Screen.width-scale.x}x{Screen.height-scale.y}");
                 
                 // scale.x *= GetScale(panel.rect.size.x, panel.rect.size.y).x;
                 // scale.y *= GetScale(panel.rect.size.x, panel.rect.size.y).y;

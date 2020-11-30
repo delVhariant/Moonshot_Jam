@@ -48,6 +48,7 @@ public class GameState : MonoBehaviour
 
     public Text phaseText;
     public Button planButton;
+    public Button reLaunchButton;
     public GameObject finishText;
 
     public Transform sub;
@@ -66,6 +67,25 @@ public class GameState : MonoBehaviour
     public GameObject escapeMenu;
     public ShowRadial radial;
 
+    public Button loadNextLevel;
+    public GameObject winPanel;
+
+    public float victoryCameraDetach = 0.5f;
+    public float victoryPanelDelay = 3.5f;
+
+    [SerializeField]
+    private string nextLevel;
+
+    public void SetNextLevel(string levelName)
+    {
+        nextLevel = levelName;
+    }
+
+    public string GetNextLevel()
+    {
+        return nextLevel;
+    }
+
     void Awake()
     {
         // Shitty singleton code, not great practice but whatevs
@@ -78,10 +98,10 @@ public class GameState : MonoBehaviour
             GameState.gameManager = this;
         }
 
-        if(gameMode != GameMode.Menu)
+        /*if(gameMode != GameMode.Menu)
         {
             planButton = phaseText.GetComponentInChildren<Button>();
-        }
+        }*/
     }
     
     public void ResetTimeScale()
@@ -97,6 +117,19 @@ public class GameState : MonoBehaviour
         //Debug.Log($"Now operating at: {Time.timeScale}. Physics every: {Time.fixedDeltaTime}");        
     }
 
+    public void LoadNextLevel()
+    {
+        if(LoadingScreen.Instance)
+        {
+            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Single));
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Single);
+        }
+
+    }
+
     public static bool IsStarted()
     {
         return GameState.gameManager.gamePhase == GamePhase.Execution;
@@ -106,6 +139,7 @@ public class GameState : MonoBehaviour
     {
         GameState.gameManager.gamePhase = GamePhase.Execution;
         phaseText.text = GamePhase.Execution.ToString();
+        reLaunchButton.gameObject.SetActive(true);
     }
 
     public static void EndRun()
@@ -210,21 +244,25 @@ public class GameState : MonoBehaviour
         phaseText.text = GamePhase.Aiming.ToString();
         phaseText.gameObject.SetActive(true);
         planButton.gameObject.SetActive(false);
+        reLaunchButton.gameObject.SetActive(false);
     }
 
     public void StartPlanning()
     {        
+        planningCam.Follow = sub;
+        realTimeCam.Follow = realTimeTarget.transform;
+        aimingCam.Follow = sub;
+        phaseText.gameObject.SetActive(true);
+
         if(controlType != ControlType.RealTime)
         {
             realTimeCam.gameObject.SetActive(false);
             aimingCam.gameObject.SetActive(false);
-            planningCam.gameObject.SetActive(true);
-            planningCam.Follow = sub;
-            
-            GameState.gameManager.gamePhase = GamePhase.Planning;
-            phaseText.gameObject.SetActive(true);
+            planningCam.gameObject.SetActive(true);            
+            GameState.gameManager.gamePhase = GamePhase.Planning;            
             phaseText.text = GamePhase.Planning.ToString();
             planButton.gameObject.SetActive(true);
+            reLaunchButton.gameObject.SetActive(false);
         }
         else
         {
@@ -235,25 +273,30 @@ public class GameState : MonoBehaviour
         
     }
 
+    public void ShowMenu()
+    {
+        if(escapeMenu && gameMode != GameMode.Menu && !escapeMenu.activeSelf && !winPanel.activeSelf)
+        {
+            EffectorSpawner.effectorSpawner.CancelSpawn();
+            if(radial)
+            {
+                radial.Hide();
+            }
+            SlowTime();
+            escapeMenu.SetActive(true);
+        }
+        else
+        {
+            ResetTimeScale();
+            escapeMenu.SetActive(false);
+        }
+    }
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && escapeMenu && gameMode != GameMode.Menu)
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!escapeMenu.activeSelf)
-            {
-                EffectorSpawner.effectorSpawner.CancelSpawn();
-                if(radial)
-                {
-                    radial.Hide();
-                }
-                SlowTime();
-                escapeMenu.SetActive(true);
-            }
-            else
-            {
-                ResetTimeScale();
-                escapeMenu.SetActive(false);
-            }
+            ShowMenu();
         }
         
     }
@@ -276,6 +319,26 @@ public class GameState : MonoBehaviour
             }
             subPos = sub.position;
         }
+    }
+
+    public void Win()
+    {
+        StartCoroutine(ShowWin());
+    }
+
+    IEnumerator ShowWin()
+    {
+        phaseText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(victoryCameraDetach);
+        planningCam.Follow = null;
+        realTimeCam.Follow = null;
+        aimingCam.Follow = null;
+        
+
+        yield return new WaitForSeconds(victoryPanelDelay);
+        if(nextLevel != "")
+            loadNextLevel.gameObject.SetActive(true);
+        winPanel.SetActive(true);
     }
 
     IEnumerator Reload()

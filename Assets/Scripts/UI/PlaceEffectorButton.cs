@@ -27,7 +27,7 @@ public class PlaceEffectorButton : MonoBehaviour
         {
             if(unlimited || limit > 0 || GameState.gameManager.gameMode != GameMode.Challenge)
             {
-                Debug.Log($"re-enabling button {transform.name}");
+                //Debug.Log($"re-enabling button {transform.name}");
                 button.interactable = true;
             }
             

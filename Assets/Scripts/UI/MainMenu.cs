@@ -9,11 +9,15 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject levelSelect;
+    public GameObject howToPlay;
     public GameObject story;
 
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera levelCam;
+    public CinemachineVirtualCamera htpCam;
     public CinemachineVirtualCamera storyCam;
+
+    public PlayStory storyScript;
 
     public TMP_Dropdown levelTypeDropdown;
 
@@ -79,8 +83,10 @@ public class MainMenu : MonoBehaviour
     {
         levelCam.enabled = true;
         mainCam.enabled = false;        
+        htpCam.enabled = false;
         storyCam.enabled = false;
         mainMenu.SetActive(false);
+        howToPlay.SetActive(false);
         story.SetActive(false);
         StartCoroutine(ChangeMenu(levelSelect));
     }
@@ -89,21 +95,43 @@ public class MainMenu : MonoBehaviour
     {
         mainCam.enabled = true;
         levelCam.enabled = false;
+        htpCam.enabled = false;
         storyCam.enabled = false;
         levelSelect.SetActive(false);
+        howToPlay.SetActive(false);
         story.SetActive(false);
         StartCoroutine(ChangeMenu(mainMenu));
     }
 
-    public void StoryClicked()
+    public void HowToPlayClicked()
     {
-        storyCam.enabled = true;
+        htpCam.enabled = true;
         mainCam.enabled = false;
-        levelCam.enabled = false;        
+        levelCam.enabled = false; 
+        storyCam.enabled = false;       
         mainMenu.SetActive(false);
         levelSelect.SetActive(false);
-        //story.SetActive(true);
+        story.SetActive(false);
+        StartCoroutine(ChangeMenu(howToPlay));
+    }
+
+    public void StoryClicked()
+    {
+        htpCam.enabled = false;
+        mainCam.enabled = false;
+        levelCam.enabled = false; 
+        storyCam.enabled = true;       
+        mainMenu.SetActive(false);
+        levelSelect.SetActive(false);
+        howToPlay.SetActive(false);
         StartCoroutine(ChangeMenu(story));
+        StartCoroutine(PlayStory());
+    }
+
+    public IEnumerator PlayStory()
+    {
+        yield return new WaitForSeconds(3);
+        storyScript.PlayDialog();
     }
 
     public IEnumerator ChangeMenu(GameObject menuSection)

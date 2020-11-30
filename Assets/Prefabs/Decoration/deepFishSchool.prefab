@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 212174416575731133}
   - component: {fileID: 212174416575731132}
   m_Layer: 0
-  m_Name: FishSchool (1)
+  m_Name: deepFishSchool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606944681836674
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606945179164552
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606945237493909
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606945466315941
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606945538881328
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606946173653883
@@ -3028,7 +3028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606946178378758
@@ -3502,7 +3502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606946494771154
@@ -3751,7 +3751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 8186713474869034979}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 7
 --- !u!1 &7624606946642496168

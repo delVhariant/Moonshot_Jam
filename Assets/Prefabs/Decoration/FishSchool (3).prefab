@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &92914452151360069
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &173687802668500938
@@ -784,7 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &229947241015363053
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &1639578324167872511
@@ -2886,7 +2886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &5202410904581470978
@@ -3028,7 +3028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &5636630612135274976
@@ -3555,7 +3555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &7601440052890236322
@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &7739715013391708118
@@ -3809,7 +3809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &8097912008755650794
@@ -3888,7 +3888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 5
   currentTarget: {fileID: 92914453200251107}
-  speed: 12
+  speed: 9
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &8221676860613117033

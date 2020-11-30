@@ -387,4 +387,4 @@ MonoBehaviour:
   isExit: 1
   speed: 10
   bigScale: 5
-  maxDistance: 60
+  maxDistance: 30

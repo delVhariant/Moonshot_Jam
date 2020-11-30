@@ -33,7 +33,12 @@ public class SubDestroyer : MonoBehaviour
             //Debug.DrawRay(transform.position,lastVel * force, Color.blue, 10f);
             //Debug.DrawRay(transform.position, force * -norm, Color.blue, 10f);
             //Debug.Log(rb.velocity.normalized);
-            GameObject.Destroy(coll.gameObject);
+            //GameObject.Destroy(coll.gameObject);
+            if(!coll.TryGetComponent<Resetter>(out Resetter r))
+            {
+                coll.gameObject.AddComponent<Resetter>();
+            }
+            coll.gameObject.SetActive(false);
             //rb.AddForce(lastVel * force, ForceMode.Impulse);
         }
     }

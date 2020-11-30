@@ -32,21 +32,21 @@ public class TeleporterEffector : EffectorBase
 
     }
 
-    // Update is called once per frame
-    protected override void Update()
+    void LateUpdate()
     {
-        
         if(EffectorSpawner.effectorSpawner.spawning == this && isExit && pair)
         {
             if(Vector3.Distance(transform.position, pair.transform.position) > maxDistance)
             {
                 transform.position = pair.transform.position + Vector3.ClampMagnitude(transform.position - pair.transform.position,maxDistance);
-                //Debug.DrawRay(pair.transform.position,Vector3.ClampMagnitude(transform.position - pair.transform.position, maxDistance), Color.red);
             }
         }
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
         base.Update();
-
-
         if(timer > 0 && teleportTarget && pair)
         {
             timer -= speed * Time.deltaTime;

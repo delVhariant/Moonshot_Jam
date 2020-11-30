@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.UI;
 
 public class WinState : MonoBehaviour
 {
     public static WinState Instance;
-
+    public VisualEffect explosion;
+    public AudioClip explosionSound;
 
     
 
@@ -39,4 +41,16 @@ public class WinState : MonoBehaviour
     {
         GameState.gameManager.Win();
     }
+
+    public void TriggerExplosion()
+    {
+        if(explosion)
+        {
+            Camera.main.GetComponent<AudioSource>().loop = false;
+            Camera.main.GetComponent<AudioSource>().Stop();
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(explosionSound);
+            explosion.SendEvent("explode");
+        }
+    }
+
 }

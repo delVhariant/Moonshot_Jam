@@ -333,7 +333,7 @@ public class GameState : MonoBehaviour
         planningCam.Follow = null;
         realTimeCam.Follow = null;
         aimingCam.Follow = null;
-        
+        WinState.Instance.TriggerExplosion();
 
         yield return new WaitForSeconds(victoryPanelDelay);
         if(nextLevel != "")

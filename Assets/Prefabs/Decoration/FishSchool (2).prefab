@@ -419,7 +419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 1439519820844813174}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &5847246276690422036

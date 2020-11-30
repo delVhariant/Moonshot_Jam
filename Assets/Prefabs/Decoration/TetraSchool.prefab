@@ -33,7 +33,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 3179110677121799090}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!95 &691279818988390041
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 3179110677121799090}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!114 &4697863732922153604
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 3179110677121799090}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!1 &6877769961410413136
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 3179110677121799090}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!114 &3662422106494194149
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomRange: 3
   currentTarget: {fileID: 3179110677121799090}
-  speed: 12
+  speed: 9.5
   slowSpeed: 3
   turnSpeed: 8
 --- !u!95 &8367450468160181886

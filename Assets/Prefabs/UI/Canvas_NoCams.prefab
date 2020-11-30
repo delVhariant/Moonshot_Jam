@@ -4086,15 +4086,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 2
   spawning: {fileID: 0}
-  impulseLimit: -1
+  impulseLimit: 5
   impulseButton: {fileID: 6387556788403188526}
-  bounceLimit: -1
+  bounceLimit: 10
   bounceButton: {fileID: 6387556786694615482}
-  bigLimit: -1
+  bigLimit: 2
   bigButton: {fileID: 6387556786918888376}
-  smallLimit: -1
+  smallLimit: 2
   smallButton: {fileID: 6387556787339816940}
-  teleLimit: -1
+  teleLimit: 2
   teleButton: {fileID: 6387556788034927385}
 --- !u!114 &6387556788401916759
 MonoBehaviour:

@@ -3494,7 +3494,7 @@ PrefabInstance:
       objectReference: {fileID: 6057049862308604970}
     - target: {fileID: 6387556788401916757, guid: d60eeb7922483114f957d0ea1c260f86, type: 3}
       propertyPath: nextLevel
-      value: JakeLevel1
+      value: MultiBiomeLevel1
       objectReference: {fileID: 0}
     - target: {fileID: 6387556788401916759, guid: d60eeb7922483114f957d0ea1c260f86, type: 3}
       propertyPath: Submarine

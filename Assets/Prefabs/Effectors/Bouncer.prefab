@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMesh: {fileID: 7429302479901625843}
-  effector: {fileID: 0}
+  effector: {fileID: 1003562035075887021}
 --- !u!135 &1491770912204334410
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -33,19 +33,29 @@ public class EffectorHighlighter : MonoBehaviour
     
     void OnMouseOver()
     {
-        if(highlightMesh && (EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime && !ShowRadial.Instance.visible)
+        if(highlightMesh && !ShowRadial.Instance.visible && EffectorSpawner.effectorSpawner.state == SpawnState.Idle)
         {
-            // Reset the color of the GameObject back to normal
-            highlightMesh.enabled = true;
+            ControlType cType = GameState.gameManager.controlType;
+            GamePhase gPhase = GameState.gameManager.gamePhase;
+            if((gPhase == GamePhase.Planning && cType != ControlType.RealTime)|| (gPhase == GamePhase.Execution && cType == ControlType.RealTime))
+            {
+                // Reset the color of the GameObject back to normal
+                highlightMesh.enabled = true;
+            }
         }
     }
 
     void OnMouseDown()
     {
-        if((EffectorSpawner.effectorSpawner.state == SpawnState.Idle && GameState.gameManager.gamePhase == GamePhase.Planning) || GameState.gameManager.controlType == ControlType.RealTime && !ShowRadial.Instance.visible)
+        if(!ShowRadial.Instance.visible && EffectorSpawner.effectorSpawner.state == SpawnState.Idle)
         {
-            if(EffectorSpawner.effectorSpawner.spawning==null)
-                select = true;
+            ControlType cType = GameState.gameManager.controlType;
+            GamePhase gPhase = GameState.gameManager.gamePhase;
+            if((gPhase == GamePhase.Planning && cType != ControlType.RealTime)|| (gPhase == GamePhase.Execution && cType == ControlType.RealTime))
+            {
+                if(EffectorSpawner.effectorSpawner.spawning==null)
+                    select = true;
+            }
         }
     }
 

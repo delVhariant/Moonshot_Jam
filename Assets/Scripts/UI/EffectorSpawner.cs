@@ -44,6 +44,7 @@ public class EffectorSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameState.OnReset += OnReset;
         if(GameState.gameManager.gameMode == GameMode.Challenge)
         {
             impulseButton.SetLimit(impulseLimit);
@@ -80,6 +81,11 @@ public class EffectorSpawner : MonoBehaviour
                 spawning.PerformAiming();
             }
         }
+    }
+
+    void OnReset()
+    {
+        CancelSpawn(false);
     }
 
     public void SpawnNew(GameObject e)
@@ -187,5 +193,9 @@ public class EffectorSpawner : MonoBehaviour
         {
             GameState.gameManager.planningCam.Follow = spawn;
         }
+    }
+    void OnDestroy()
+    {
+        GameState.OnReset -= OnReset;
     }
 }

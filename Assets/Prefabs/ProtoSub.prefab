@@ -55,7 +55,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 98
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!136 &1230543837604685379
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
     m_Bits: 4096
   rb: {fileID: 0}
   baseMass: 0
+  sand: {fileID: 1911476802649384454, guid: b9444ccee5a9c754495d7bf696aa6e9e, type: 3}
 --- !u!136 &313876357
 CapsuleCollider:
   m_ObjectHideFlags: 0

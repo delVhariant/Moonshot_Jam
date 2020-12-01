@@ -8,6 +8,8 @@ public class SubDestroyer : MonoBehaviour
     public Rigidbody rb;
     public float baseMass;
 
+    public GameObject sand;
+
     Vector3 lastVel;
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +36,7 @@ public class SubDestroyer : MonoBehaviour
             //Debug.DrawRay(transform.position, force * -norm, Color.blue, 10f);
             //Debug.Log(rb.velocity.normalized);
             //GameObject.Destroy(coll.gameObject);
+            Instantiate(sand, transform.position, transform.rotation);
             if(!coll.TryGetComponent<Resetter>(out Resetter r))
             {
                 coll.gameObject.AddComponent<Resetter>();

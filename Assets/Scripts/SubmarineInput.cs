@@ -24,12 +24,20 @@ public class SubmarineInput : MonoBehaviour
         /*controls = new Controls();
         controls.Enable();*/
         GameState.gameManager.sub = Submarine;
+        GameState.OnReset += ResetSub;
     }
     
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void ResetSub()
+    {
+        Submarine.GetComponent<CapsuleCollider>().enabled = false;
+        Submarine.GetComponent<Rigidbody>().isKinematic = true;
+        Submarine.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     // Update is called once per frame
@@ -108,5 +116,10 @@ public class SubmarineInput : MonoBehaviour
                 
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        GameState.OnReset -= ResetSub;
     }
 }

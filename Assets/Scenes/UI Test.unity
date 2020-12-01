@@ -1092,6 +1092,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313876357, guid: 4bf4147f98f7e7b4c820ccc800badbcf, type: 3}
+      propertyPath: m_Radius
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 313876357, guid: 4bf4147f98f7e7b4c820ccc800badbcf, type: 3}
+      propertyPath: m_Height
+      value: 4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6528669222317026896, guid: 4bf4147f98f7e7b4c820ccc800badbcf, type: 3}
       propertyPath: m_Name
       value: ProtoSub

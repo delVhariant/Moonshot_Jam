@@ -27,6 +27,7 @@ public class TeleporterEffector : EffectorBase
     // Start is called before the first frame update
     void Start()
     {
+        GameState.OnReset += ResetObject;
         if(!scaler)
             gameObject.SetActive(false);
 
@@ -41,6 +42,13 @@ public class TeleporterEffector : EffectorBase
                 transform.position = pair.transform.position + Vector3.ClampMagnitude(transform.position - pair.transform.position,maxDistance);
             }
         }
+    }
+
+    void ResetObject()
+    {
+        timer=0;
+        teleportTarget=null;
+        scaler.Scale(1, speed);
     }
 
     // Update is called once per frame
@@ -152,5 +160,6 @@ public class TeleporterEffector : EffectorBase
         {
             GameObject.Destroy(pair.gameObject);
         }
+        GameState.OnReset -= ResetObject;
     }
 }

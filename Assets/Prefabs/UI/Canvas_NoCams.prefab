@@ -4094,7 +4094,7 @@ MonoBehaviour:
   bigButton: {fileID: 6387556786918888376}
   smallLimit: 2
   smallButton: {fileID: 6387556787339816940}
-  teleLimit: 2
+  teleLimit: 1
   teleButton: {fileID: 6387556788034927385}
 --- !u!114 &6387556788401916759
 MonoBehaviour:
